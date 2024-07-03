@@ -1,5 +1,5 @@
 import ContainerWrapper from '@/components/ContainerWrapper';
-import Logo from '@/assets/logo.svg';
+import Logo from '@/assets/Logo.svg';
 import MarkIcon from '@/assets/adress.svg';
 import PhoneIcon from '@/assets/phone.svg';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';

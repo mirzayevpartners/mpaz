@@ -1,9 +1,8 @@
 import ContainerWrapper from '@/components/ContainerWrapper';
 import ButtonArrowRight from '@/components/custom-ui/ButtonArrowRight';
 import BigNewsImg from '@/assets/HPNewsBigNews.png';
-import SmallNewsImg from '@/assets/HPNewsSmallNews.png';
+import SmallNewsImg from '@/assets/HpNewsSmallNews.png';
 import SmallGoldBtn from '@/components/custom-ui/SmallGoldBtn';
-import Scrollable from '@/components/custom-ui/Scrollable';
 import { Slider } from '@/components/custom-ui/Slider';
 import { CarouselItem } from '@/components/ui/carousel';
 import Link from 'next/link';

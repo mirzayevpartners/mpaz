@@ -1,8 +1,7 @@
-//@ts-nocheck
 'use client';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import SingleNewsIMG from '@/assets/singleNewsIMG.png';
+import SingleNewsIMG from '@/assets/SingleNewsIMG.png';
 import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md';
 import React from 'react';
 import { cn } from '@/lib/utils';

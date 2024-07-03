@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import TopShowLinks from '@/components/TopShowLinks';
-import AboutPageBg from '@/assets/AboutPageBg.png';
+import AboutPageBg from '@/assets/AboutPageBG.png';
 import ContainerWrapper from '@/components/ContainerWrapper';
 import AboutPageBgSmall from '@/assets/AboutPageBgSmall.png';
 import { Separator } from '@/components/ui/separator';
