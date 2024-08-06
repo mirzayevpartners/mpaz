@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,8 +16,17 @@ html {
 
 /*390 -> 91.8*/
 
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
 .myContainer {
   width: 91.8%;
+}
+.star-radius {
+    border-bottom-right-radius: 78px;
 }
 
 /*@media (max-width: 1199px) {*/
@@ -57,4 +68,20 @@ html {
   10% {
     transform: rotate(0deg);
   }
+}
+
+.STAR {
+  animation: star 3s infinite linear;
+  /*transform-origin: center;*/
+}
+@keyframes star {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+    100% {
+        transform: rotate(360deg);
+    }
 }

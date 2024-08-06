@@ -11,38 +11,27 @@ import { Slider } from '@/components/custom-ui/Slider';
 import { CarouselItem } from '@/components/ui/carousel';
 import Link from 'next/link';
 import TeamMemberCard from '@/components/TeamMemberCard';
-function TeamPartners() {
-  const data = [
-    {
-      photo: HBTeamPartnerOne,
-      name: 'FIDAN IBRAHIMOVA',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerTwo,
-      name: 'SƏNAN ŞAMİL',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerThree,
-      name: 'CƏMİLƏ AĞAYEVA',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerFour,
-      name: 'QULAM ISMAYILZADE',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-  ];
+import { ITeam } from '@/types';
+import dbConnect from '@/lib/db';
+import Team from '@/models/team';
+async function TeamPartners() {
+  let team: ITeam[] = [];
+  try {
+    await dbConnect();
+    team = await Team.find({}).limit(4);
+  } catch (e) {
+    return <div>Server Error</div>;
+  }
   return (
     <Slider wrapperClassName={'min1080:max-w-[45%] md:max-w-[65%] 800:max-w-full'}>
-      {data.map((item, index) => (
-        <CarouselItem key={index} className={'flex basis-1/2 items-center justify-center 500:basis-2/3'}>
-          <TeamMemberCard photoUrl={item.photo.src} name={item.name} position={item.position} email={item.email} />
+      {team.map((item, index) => (
+        <CarouselItem key={item._id} className={'flex basis-1/2 items-center justify-center 500:basis-2/3'}>
+          <TeamMemberCard
+            photoUrl={item.photo.src}
+            name={item.fullName}
+            position={item.profession}
+            email={item.email}
+          />
         </CarouselItem>
       ))}
     </Slider>
@@ -51,7 +40,7 @@ function TeamPartners() {
 
 export default function HPTeamSection() {
   return (
-    <section id={'TeamSection'} className={'relative py-12'}>
+    <section id={'TeamSection'} className={'relative py-28'}>
       <div className={'absolute inset-0 -z-10 flex h-full w-full 900:flex-col'}>
         <div
           className={'w-1/2 bg-bgGray bg-no-repeat 900:h-1/2 900:w-full'}
@@ -68,7 +57,7 @@ export default function HPTeamSection() {
       <ContainerWrapper className={'flex h-full items-center justify-center gap-x-10 900:flex-col 900:gap-y-14'}>
         <div className={'flex max-w-[30%] flex-col gap-y-14 900:max-w-full'}>
           <div className={'flex flex-col gap-y-7'}>
-            <h3 className={'text-[32px] font-semibold leading-[41.6px] text-mainGreen'}>
+            <h3 className={'font-playfair text-[32px] font-semibold leading-[41.6px] text-mainGreen'}>
               Peşəkar partnyorlarımızla tanış olun!
             </h3>
             <p className={'text-base leading-[29.82px] text-newsText'}>
@@ -76,7 +65,7 @@ export default function HPTeamSection() {
               Arcu a quisque amet facilisis orci egestas{' '}
             </p>
           </div>
-          <Link href={'/komandamiz'}>
+          <Link className={'w-fit'} href={'/komandamiz'}>
             <ButtonArrowRight className={'w-fit'} text={'Bütün komandamiz'} />
           </Link>
         </div>

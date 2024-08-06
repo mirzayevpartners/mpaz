@@ -20,12 +20,12 @@ export default function TeamMemberCard({
 }: ITeamMemberCard) {
   return (
     <div className={cn('flex max-w-[253px] flex-col duration-300 hover:shadow-lg', cardClassName)}>
-      <div className={'flex items-center justify-center'}>
+      <div className={'flex h-[305px] items-center justify-center'}>
         <img className={cn(imgClassName)} src={photoUrl} alt={name} />
       </div>
       <div className={'flex w-full flex-col gap-y-1 bg-white p-4 '}>
-        <p className={'text-xs font-semibold leading-[14.52px] text-secondGold'}>{position}</p>
-        <h4 className={'text-lg font-semibold leading-6 text-mainGreen 800:text-sm'}>{name}</h4>
+        <p className={'text-xs uppercase font-semibold leading-[14.52px] text-secondGold'}>{position}</p>
+        <h4 className={'font-playfair text-lg uppercase font-semibold leading-6 text-mainGreen 800:text-sm'}>{name}</h4>
         <div className={'flex items-center gap-x-1'}>
           <FaRegEnvelope className={'text-secondText'} />
           <p className={'text-[14px] leading-[16.94px] text-secondText'}>{email}</p>

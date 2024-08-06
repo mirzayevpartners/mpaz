@@ -26,11 +26,11 @@ export default function Home() {
         <div className={'flex flex-col items-center gap-y-6'}>
           <div className={'flex flex-col gap-y-1 items-center'}>
             <h2 className={'text-secondGold text-[20px] leading-[24.2px]'}>HAQQIMIZDA</h2>
-            <h1 className={'text-center font-semibold text-mainGreen text-[32px] leading-[42.66px]'}>
+            <h1 className={'font-playfair text-center font-semibold text-mainGreen text-[32px] leading-[42.66px]'}>
               “Mirzəyev və partnyorları şirkəti kimdir
             </h1>
           </div>
-          <p className={'text-base leading-[28px] text-center text-newsText xl:max-w-[70%] md:max-w-[85%] max-w-full'}>
+          <p className={'font-roboto text-base leading-[28px] text-center text-newsText xl:max-w-[70%] md:max-w-[85%] max-w-full'}>
             “Mirzayev and Partners Law Firm” hüquq şirkəti Sizin problemlərinizi hüquq müstəvisində həll etməyə qadir
             təcrübəli, müstəqil vəkillərin və hüquqşünasların komandasıdır. Biz hüquqi və fiziki şəxslərin müdafiəsini
             və ən müxtəlif hüquqi problemlərin, ən mürəkkəb hüquqi məsələlərin müasir həllini təklif edirik. İstər
@@ -48,8 +48,8 @@ export default function Home() {
             yerdə yanınızdayıq.
           </p>
           <div className={'flex flex-col gap-y-1 items-center'}>
-            <h1 className={'text-mainGreen font-semibold text-[32px] leading-[42.66px]'}>Missiyamız</h1>
-            <p className={'text-base leading-7 text-center text-newsText'}>
+            <h1 className={'font-playfair text-mainGreen font-semibold text-[32px] leading-[42.66px]'}>Missiyamız</h1>
+            <p className={'font-roboto text-base leading-7 text-center text-newsText'}>
               Bilik və məsuliyyətimizə güvənərək ədalətin bərqərar olmasına nail oluruq.
             </p>
           </div>

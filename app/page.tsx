@@ -11,7 +11,7 @@ import HPFaqSection from '@/components/MainPage/HPFaqSection';
 import HPCommunicateSection from '@/components/MainPage/HPCommunicateSection';
 import LocationMap from '@/components/LocationMap';
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <HPFirstSection />

@@ -58,7 +58,7 @@ export default function BottomNavbar() {
   return (
     <header
       style={{ top: scrolled ? 0 : 'unset', position: scrolled ? 'fixed' : 'unset' }}
-      className={'z-[100] flex h-[5.25rem] w-full items-center border-b border-b-myGray bg-white'}
+      className={'BottomNavbar z-[100] flex h-[5.25rem] w-full items-center border-b border-b-myGray bg-white'}
     >
       <ContainerWrapper>
         <div className={'flex items-center justify-between'}>

@@ -1,63 +1,19 @@
 import TopShowLinks from '@/components/TopShowLinks';
 import ContainerWrapper from '@/components/ContainerWrapper';
-import HBTeamPartnerOne from '@/assets/HBTeamPartnerOne.png';
-import HBTeamPartnerTwo from '@/assets/HBTeamPartnerTwo.png';
-import HBTeamPartnerThree from '@/assets/HBTeamPartnerThree.png';
-import HBTeamPartnerFour from '@/assets/HBTeamPartnerFour.png';
 import TeamMemberCard from '@/components/TeamMemberCard';
 import PageTitleCard from '@/components/PageTitleCard';
+import dbConnect from '@/lib/db';
+import { ITeam } from '@/types';
+import Team from '@/models/team';
 
-export default function Home() {
-  const data = [
-    {
-      photo: HBTeamPartnerOne,
-      name: 'FIDAN IBRAHIMOVA',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerTwo,
-      name: 'SƏNAN ŞAMİL',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerThree,
-      name: 'CƏMİLƏ AĞAYEVA',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerFour,
-      name: 'QULAM ISMAYILZADE',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerOne,
-      name: 'FIDAN IBRAHIMOVA',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerTwo,
-      name: 'SƏNAN ŞAMİL',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerThree,
-      name: 'CƏMİLƏ AĞAYEVA',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-    {
-      photo: HBTeamPartnerFour,
-      name: 'QULAM ISMAYILZADE',
-      position: 'HÜQUQŞUNAS',
-      email: 'Fidani@m-p.az',
-    },
-  ];
+export default async function Home() {
+  let data: ITeam[] = [];
+  try {
+    await dbConnect();
+    data = await Team.find({ active: true });
+  } catch (e) {
+    return <div>Server error</div>;
+  }
   const links = [
     {
       text: 'Əsas səhifə',
@@ -87,10 +43,10 @@ export default function Home() {
               <TeamMemberCard
                 cardClassName={'400:max-w-[360px]'}
                 imgClassName={'400:w-full'}
-                key={item.name}
+                key={item._id}
                 photoUrl={item.photo.src}
-                name={item.name}
-                position={item.position}
+                name={item.fullName}
+                position={item.profession}
                 email={item.email}
               />
             );

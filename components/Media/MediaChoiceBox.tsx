@@ -1,12 +1,14 @@
+'use client';
 import { SlMagnifier } from 'react-icons/sl';
 import CustomInput from '@/components/custom-ui/CustomInput';
 import { cn } from '@/lib/utils';
 import { PiPlayBold } from 'react-icons/pi';
 import { LuGalleryVerticalEnd } from 'react-icons/lu';
-
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 interface MediaChoiceBoxProps {
   activeChoice: number;
-  setActiveChoice: (id: number) => void;
+  setActiveChoice: (index: number) => void;
 }
 
 export default function MediaChoiceBox({ activeChoice, setActiveChoice }: MediaChoiceBoxProps) {

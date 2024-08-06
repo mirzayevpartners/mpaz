@@ -11,7 +11,7 @@ export default function HPCustomersSection(): React.JSX.Element {
             <h5 className={'text-base uppercase leading-[19.36px] text-secondGold'}>müştərİ məmnunİyyətİ</h5>
             <h2
               className={
-                'text-[32px] text-center font-semibold leading-[42.66px] text-textBlue max-w-[20ch] 800:max-w-full'
+                'font-playfair text-[32px] text-center font-semibold leading-[42.66px] text-textBlue max-w-[20ch] 800:max-w-full'
               }
             >
               Bizim haqqımızdakı düşüncələr

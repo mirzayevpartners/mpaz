@@ -33,6 +33,7 @@ const config = {
         900: { max: '900px' },
         450: { max: '450px' },
         500: { max: '500px' },
+        600: { max: '600px' },
         min500: { min: '500px' },
         min450: { min: '450px' },
         min900: { min: '900px' },

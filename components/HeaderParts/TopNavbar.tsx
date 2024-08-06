@@ -3,31 +3,46 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaLinkedinIn } from 're
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import UKFlagSvg from '@/assets/UKFlagSvg.svg';
 import Link from 'next/link';
+import { ISocials } from '@/types';
+import dbConnect from '@/lib/db';
+import Socials from '@/models/socials';
+import { ReactElement } from 'react';
 
-function HeaderIcons() {
+async function HeaderIcons() {
+  let socials: ISocials[] = [];
+  try {
+    await dbConnect();
+    socials = await Socials.find({});
+  } catch (e) {
+    return <div>Server Error</div>;
+  }
   const iconStylesObj = {
     size: 12,
     className: 'text-secondText',
   };
-  const links = [
-    { href: '/', icon: <FaFacebookF {...iconStylesObj} /> },
-    { href: '/', icon: <FaTwitter {...iconStylesObj} /> },
-    { href: '/', icon: <FaInstagram {...iconStylesObj} /> },
-    { href: '/', icon: <FaYoutube {...iconStylesObj} /> },
-    { href: '/', icon: <FaLinkedinIn {...iconStylesObj} /> },
-  ];
+  const socialLinkObj: {
+    [key: string]: ReactElement;
+  } = {
+    facebook: <FaFacebookF {...iconStylesObj} />,
+    twitter: <FaTwitter {...iconStylesObj} />,
+    instagram: <FaInstagram {...iconStylesObj} />,
+    youtube: <FaYoutube {...iconStylesObj} />,
+    linkedin: <FaLinkedinIn {...iconStylesObj} />,
+  };
   return (
     <div className={'flex items-center gap-x-[0.688rem]'}>
-      {links.map((link, index) => {
-        return (
-          <Link
-            className={'flex size-6 items-center justify-center rounded-full border-2 border-secondText'}
-            href={link.href}
-            key={index}
-          >
-            {link.icon}
-          </Link>
-        );
+      {socials.map((link) => {
+        if (link.title in socialLinkObj) {
+          return (
+            <Link
+              className={'flex size-6 items-center justify-center rounded-full border-2 border-secondText'}
+              href={link.link}
+              key={link._id}
+            >
+              {socialLinkObj[link.title]}
+            </Link>
+          );
+        }
       })}
     </div>
   );
@@ -47,7 +62,7 @@ function HeaderSearchAndLanguage() {
 
 export default function TopNavbar() {
   return (
-    <header className={'flex h-12 w-full items-center bg-mainGreen 800:hidden'}>
+    <header className={'TopNavbar flex h-12 w-full items-center bg-mainGreen 800:hidden'}>
       <ContainerWrapper>
         <div className={'flex items-center justify-between'}>
           <HeaderIcons />

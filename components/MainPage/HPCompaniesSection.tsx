@@ -6,70 +6,60 @@ import AzerqazLogo from '@/assets/companyLogos/azerqaz.png';
 import RabiteLogo from '@/assets/companyLogos/rabite.png';
 import YelobankLogo from '@/assets/companyLogos/yelobank.png';
 import { CarouselItem } from '@/components/ui/carousel';
+import { ICompany } from '@/types';
+import dbConnect from '@/lib/db';
+import Company from '@/models/company';
 
-export default function HPCompaniesSection() {
-  const companies = [
-    {
-      title: 'gh',
-      logo: GhLogo.src,
-    },
-    {
-      title: 'id',
-      logo: IdLogo.src,
-    },
-    {
-      title: 'amcham',
-      logo: AmchamLogo.src,
-    },
-    {
-      title: 'azerqaz',
-      logo: AzerqazLogo.src,
-    },
-    {
-      title: 'rabite',
-      logo: RabiteLogo.src,
-    },
-    {
-      title: 'yelobank',
-      logo: YelobankLogo.src,
-    },
-    {
-      title: 'gh',
-      logo: GhLogo.src,
-    },
-    {
-      title: 'id',
-      logo: IdLogo.src,
-    },
-    {
-      title: 'amcham',
-      logo: AmchamLogo.src,
-    },
-  ];
+export default async function HPCompaniesSection() {
+  let companies: ICompany[] = [];
+  try {
+    await dbConnect();
+    companies = await Company.find({ active: true });
+  } catch (e) {
+    return <div>Server Error</div>;
+  }
   return (
     <section className={'bg-bgGray flex flex-col items-center py-12 gap-y-16'}>
       <div className={'flex flex-col gap-y-1 items-center'}>
         <h4 className={'text-secondGold text-[20px] leading-[24.2px]'}>BİZİ SEÇƏN</h4>
-        <h2 className={'text-mainGreen font-semibold text-[32px] leading-[42.66px]'}>Tərəfdaş şirkətlər</h2>
+        <h2 className={'font-playfair text-mainGreen font-semibold text-[32px] leading-[42.66px]'}>Tərəfdaş şirkətlər</h2>
       </div>
       <div className={'w-full flex flex-col gap-y-8'}>
-        <Slider loop={true} autoPlay={false} autoScroll={true}>
+        <Slider autoScrollDirection={'backward'} loop={true} autoPlay={false} autoScroll={true}>
           {companies.map((company) => {
             return (
-              <CarouselItem className={'w-[250px] basis-[unset]'} key={company.title}>
+              <CarouselItem className={'w-[250px] basis-[unset]'} key={company._id}>
                 <div className={'bg-white flex items-center w-[200px] h-[130px] justify-center'}>
-                  <img src={company.logo} />
+                  <img src={company.image.src} />
+                </div>
+              </CarouselItem>
+            );
+          })}
+          {companies.map((company) => {
+            return (
+              <CarouselItem className={'w-[250px] basis-[unset]'} key={company._id}>
+                <div className={'bg-white flex items-center w-[200px] h-[130px] justify-center'}>
+                  <img src={company.image.src} />
                 </div>
               </CarouselItem>
             );
           })}
         </Slider>
-        <Slider autoScrollDirection={'backward'} loop={true} autoPlay={false} autoScroll={true}>
+        <Slider autoScrollDirection={'forward'} loop={true} autoPlay={false} autoScroll={true}>
           {companies.map((company) => {
             return (
-              <CarouselItem className={'w-[250px] basis-[unset]'} key={company.title}>
+              <CarouselItem className={'w-[250px] basis-[unset]'} key={company._id}>
                 <div className={'bg-white flex items-center w-[200px] h-[130px] justify-center'}>
-                  <img src={company.logo} />
+                  <img src={company.image.src} />
+                </div>
+              </CarouselItem>
+            );
+          })}
+          {companies.map((company) => {
+            return (
+              <CarouselItem className={'w-[250px] basis-[unset]'} key={company._id}>
+                <div className={'bg-white flex items-center w-[200px] h-[130px] justify-center'}>
+                  <img src={company.image.src} />
                 </div>
               </CarouselItem>
             );

@@ -18,7 +18,7 @@ function SmallShownNewsCard() {
             <IoStar size={13} />
             <span>Fotolar</span>
           </div>
-          <h5 className={'font-semibold text-mainGreen text-[20px] leading-[30px]'}>
+          <h5 className={'font-playfair font-semibold text-mainGreen text-[20px] leading-[30px]'}>
             "Mirzəyev və Partnyorları" Vəkil Bürosunda Müstəqilliyin Bərpas...
           </h5>
         </div>
@@ -33,7 +33,7 @@ export default function NewsDetailsRightPart() {
     <div className={'flex flex-1 flex-col'}>
       <div className={'flex flex-col gap-y-[50px]'}>
         <div className={'flex flex-col gap-y-6'}>
-          <h3 className={'font-semibold text-xl text-mainGreen'}>Saytda axtar</h3>
+          <h3 className={'font-playfair font-semibold text-xl text-mainGreen'}>Saytda axtar</h3>
           <div className={'flex w-[90%] h-[60px] border border-myGray'}>
             <input
               className={
@@ -50,7 +50,7 @@ export default function NewsDetailsRightPart() {
         <Separator className={'h-[1px] bg-myGray'} />
       </div>
       <div className={'flex flex-col gap-y-6'}>
-        <h4 className={'text-mainGreen font-semibold text-xl'}>Digər bənzər məqalələr</h4>
+        <h4 className={'font-playfair text-mainGreen font-semibold text-xl'}>Digər bənzər məqalələr</h4>
         <div className={'flex flex-col gap-y-[32px]'}>
           {[1, 2, 3, 4].map((item, index) => {
             return <SmallShownNewsCard key={index} />;

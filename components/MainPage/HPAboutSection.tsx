@@ -4,7 +4,7 @@ import ButtonArrowRight from '@/components/custom-ui/ButtonArrowRight';
 import Link from 'next/link';
 export default function HPAboutSection() {
   return (
-    <section id={'AboutSection'} className={'bg-white py-12'}>
+    <section id={'AboutSection'} className={'bg-white py-28'}>
       <ContainerWrapper
         className={'flex h-full items-center justify-center gap-x-6 1000:flex-col-reverse 1000:gap-y-14'}
       >
@@ -18,7 +18,7 @@ export default function HPAboutSection() {
               <h5 className={'text-base leading-[1.21rem] text-secondGold'}>HAQQIMIZDA</h5>
               <h1
                 className={
-                  'max-w-[20ch] text-[2rem] font-semibold leading-[2.666rem] text-mainGreen 500:text-[28px] 500:leading-[37.32px]'
+                  'font-playfair max-w-[20ch] text-[2rem] font-semibold leading-[2.666rem] text-mainGreen 500:text-[28px] 500:leading-[37.32px]'
                 }
               >
                 “Mirzəyev və partnyorları şirkəti kimdir
@@ -31,7 +31,7 @@ export default function HPAboutSection() {
               egestas sed sed volutpat.Lorem ipsum dolor sit amet consectetur.
             </p>
           </div>
-          <Link href={'/haqqimizda'}>
+          <Link className={'w-fit'} href={'/haqqimizda'}>
             <ButtonArrowRight className={'w-fit 500:w-full 500:justify-center'} text={'Daha ətraflı'} />
           </Link>
         </div>

@@ -3,70 +3,18 @@ import ContainerWrapper from '@/components/ContainerWrapper';
 import PageTitleCard from '@/components/PageTitleCard';
 import LawIcon from '@/assets/law.svg';
 import ServiceCard from '@/components/ServiceCard';
+import dbConnect from '@/lib/db';
+import { IService } from '@/types';
+import Service from '@/models/service';
 
-export default function Home() {
-  const data = [
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-    {
-      icon: LawIcon,
-      title: 'Cinayət İşləri',
-      text: 'Lorem ipsum dolor sit amet consectetur.',
-    },
-  ];
+export default async function Home() {
+  let data: IService[] = [];
+  try {
+    await dbConnect();
+    data = await Service.find({ active: true });
+  } catch (e) {
+    return <div>Server error</div>;
+  }
   const links = [
     {
       text: 'Əsas səhifə',
@@ -91,7 +39,13 @@ export default function Home() {
         <div className={'grid w-full xl:w-[85%] lg:!grid-cols-4 md:!grid-cols-3 min500:grid-cols-2 s'}>
           {data.map((item, index) => {
             return (
-              <ServiceCard key={index} index={index} iconUrl={item.icon.src} title={item.title} text={item.text} />
+              <ServiceCard
+                key={index}
+                index={index}
+                iconUrl={item.icon.src}
+                title={item.title}
+                text={item.description}
+              />
             );
           })}
         </div>
