@@ -1,16 +1,21 @@
-import AddressIcon from '@/assets/adress.svg';
-import PhoneIcon from '@/assets/phone.svg';
 import ContainerWrapper from '@/components/ContainerWrapper';
 import { IContact } from '@/types';
 import dbConnect from '@/lib/db';
 import Contact from '@/models/contact';
+import { Locale } from '@/i18config';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export default async function HPCommunicateSection() {
+interface Props {
+  locale: Locale;
+}
+export default async function HPCommunicateSection({ locale }: Props) {
+  unstable_setRequestLocale(locale);
   let info: IContact[] = [];
   try {
     await dbConnect();
     info = await Contact.find({});
   } catch (e) {
+    console.log(e);
     return <div>Server Error</div>;
   }
   const translation: {

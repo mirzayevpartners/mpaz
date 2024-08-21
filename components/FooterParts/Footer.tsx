@@ -10,7 +10,13 @@ import dbConnect from '@/lib/db';
 import Contact from '@/models/contact';
 import Socials from '@/models/socials';
 import { ReactElement } from 'react';
-export default async function Footer() {
+import { Locale } from '@/i18config';
+
+interface Props {
+  locale: Locale;
+}
+
+export default async function Footer({ locale }: Props) {
   let contactData: IContact[] = [];
   let socials: ISocials[] = [];
   try {
@@ -56,13 +62,13 @@ export default async function Footer() {
           {socials.map((link) => {
             if (link.title in socialLinkObj) {
               return (
-                <Link
+                <a
                   className={'size-10 border-2 border-mainGreen flex items-center justify-center rounded-full'}
                   key={link._id}
                   href={link.link}
                 >
                   {socialLinkObj[link.title]}
-                </Link>
+                </a>
               );
             }
           })}

@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import { Link } from '@/navigation';
+
 import ContainerWrapper from '@/components/ContainerWrapper';
 
 interface TopShowLinksProps {
@@ -20,7 +21,7 @@ export default function TopShowLinks({ links }: TopShowLinksProps) {
                   className={`text-base ${index === links.length - 1 ? 'text-mainGreen' : 'text-secondText'}`}
                   href={link.href}
                 >
-                  {link.text}
+                  {link.text}{' '}
                 </Link>
                 {index !== links.length - 1 && <span>{'/'}</span>}
               </div>

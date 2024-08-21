@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import { IAboutUs } from '@/types';
-import { deleteFromCld } from '@/app/action';
+import { deleteFromR2 } from '@/app/action';
 import Aboutus from '@/models/aboutus';
 import { revalidatePath } from 'next/cache';
 
@@ -76,7 +76,7 @@ export async function DELETE(req: NextRequest) {
 
     const public_id_arr = [aboutus.image.public_id];
     // console.log(public_id_arr);
-    await deleteFromCld(public_id_arr);
+    await deleteFromR2(public_id_arr);
     revalidatePath('/', 'layout');
     return NextResponse.json(aboutus);
   } catch (e) {

@@ -2,10 +2,22 @@ import mongoose from 'mongoose';
 
 const newsSchema = new mongoose.Schema(
   {
-    title: String,
+    title: {
+      az: String,
+      en: String,
+      ru: String,
+    },
     slug: String,
-    slugTitle: String,
-    content: String,
+    slugTitle: {
+      az: String,
+      en: String,
+      ru: String,
+    },
+    content: {
+      az: String,
+      en: String,
+      ru: String,
+    },
     images: [{ src: String, title: String, public_id: String }],
     mainImage: { src: String, title: String, public_id: String },
     active: { type: Boolean, default: true },

@@ -2,6 +2,8 @@ import { Separator } from '@/components/ui/separator';
 import { SlMagnifier } from 'react-icons/sl';
 import SmallShownNewsIMG from '@/assets/SmallShownNewsPNG.png';
 import { IoStar } from 'react-icons/io5';
+import { Suspense } from 'react';
+import NewsSearchInput from '@/components/xeberler/NewsSearchInput';
 function SmallShownNewsCard() {
   return (
     <div className={'flex gap-x-4'}>
@@ -34,18 +36,9 @@ export default function NewsDetailsRightPart() {
       <div className={'flex flex-col gap-y-[50px]'}>
         <div className={'flex flex-col gap-y-6'}>
           <h3 className={'font-playfair font-semibold text-xl text-mainGreen'}>Saytda axtar</h3>
-          <div className={'flex w-[90%] h-[60px] border border-myGray'}>
-            <input
-              className={
-                'text-base flex-1 pl-2 leading-7 text-[#77829D] !outline-transparent !outline-offset-0 !ring-offset-0 !ring-transparent'
-              }
-              placeholder={'Saytda axtar'}
-              type={'text'}
-            />
-            <div className={'w-[60px] flex justify-center items-center bg-secondGold'}>
-              <SlMagnifier color={'white'} size={24} fontWeight={600} />
-            </div>
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <NewsSearchInput />
+          </Suspense>
         </div>
         <Separator className={'h-[1px] bg-myGray'} />
       </div>

@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import { IGallery, IVideo } from '@/types';
-import { deleteFromCld } from '@/app/action';
-import Gallery from '@/models/gallery';
+import { IVideo } from '@/types';
 import Video from '@/models/video';
 import { revalidatePath } from 'next/cache';
 

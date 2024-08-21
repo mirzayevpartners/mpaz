@@ -1,22 +1,6 @@
-import {
-  Datagrid,
-  EmailField,
-  List,
-  TextField,
-  Edit,
-  SimpleForm,
-  TextInput,
-  Create,
-  useRecordContext,
-  ImageInput,
-  ImageField,
-  BooleanField,
-  BooleanInput,
-  RichTextField,
-  DateField,
-  DateInput,
-} from 'react-admin';
+import { Datagrid, List, TextField, Edit, SimpleForm, Create, ImageInput, ImageField } from 'react-admin';
 import RichInput from '@/components/Admin/RichInput';
+import GridWrapper from '@/components/Admin/GridWrapper';
 
 export const AboutUsList = () => (
   <List>
@@ -46,7 +30,11 @@ export const AboutUsCreate = () => (
       <ImageInput source="image" label="Şəkil">
         <ImageField source="src" title="Gallery image" />
       </ImageInput>
-      <RichInput source={'text'} label={'Mətn'} />
+      <GridWrapper>
+        <RichInput source={'text.az'} label={'Mətn(Az)'} />
+        <RichInput source={'text.en'} label={'Mətn(En)'} />
+        <RichInput source={'text.ru'} label={'Mətn(Ru)'} />
+      </GridWrapper>
       {/*<BooleanInput label={'Aktiv'} source="active" />*/}
     </SimpleForm>
   </Create>

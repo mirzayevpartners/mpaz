@@ -11,6 +11,7 @@ interface MediaCategory {
   galleryCategories: CategoryType[];
   activeCategory: string;
   setActiveCategory: (category: string) => void;
+  t: any;
 }
 export default function MediaCategories({
   activeCategory,
@@ -18,6 +19,7 @@ export default function MediaCategories({
   activeChoice,
   videoCategories,
   galleryCategories,
+  t,
 }: MediaCategory) {
   const categories = activeChoice === 0 ? videoCategories : galleryCategories;
   return (
@@ -33,8 +35,8 @@ export default function MediaCategories({
             className={cn(
               'flex items-center bg-white py-4 px-10 border border-myGray text-base text-mainGreen',
               activeCategory === category.id && 'bg-myGray',
-              activeCategory === '0' && category.name === 'Bütün Videolar' && 'bg-myGray',
-              activeCategory === '0' && category.name === 'Bütün şəkillər' && 'bg-myGray'
+              activeCategory === '0' && category.name === t('allVideos') && 'bg-myGray',
+              activeCategory === '0' && category.name === t('allPhotos') && 'bg-myGray'
             )}
           >
             {category.name}

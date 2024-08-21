@@ -2,8 +2,16 @@ import mongoose from 'mongoose';
 
 const teamSchema = new mongoose.Schema(
   {
-    question: String,
-    answer: String,
+    question: {
+      az: String,
+      en: String,
+      ru: String,
+    },
+    answer: {
+      az: String,
+      en: String,
+      ru: String,
+    },
     active: { type: Boolean, default: true },
   },
   { timestamps: true }

@@ -15,12 +15,13 @@ import {
   RichTextField,
 } from 'react-admin';
 import RichInput from '@/components/Admin/RichInput';
+import GridWrapper from '@/components/Admin/GridWrapper';
 
 export const ServiceList = () => (
   <List>
     <Datagrid bulkActionButtons={false} rowClick="edit">
-      <TextField label={'Başlıq'} source="title" />
-      <TextField label={'Açıqlama'} source="description" />
+      <TextField label={'Başlıq(Az)'} source="title.az" />
+      <TextField label={'Açıqlama(Az)'} source="description.az" />
       <BooleanField label={'Aktiv'} source="active" />
     </Datagrid>
   </List>
@@ -29,8 +30,16 @@ export const ServiceList = () => (
 export const ServiceEdit = () => (
   <Edit>
     <SimpleForm>
-      <TextInput label={'Başlıq'} required source="title" />
-      <TextInput label={'Açıqlama'} required source="description" />
+      <GridWrapper>
+        <TextInput label={'Başlıq(Az)'} required source="title.az" />
+        <TextInput label={'Başlıq(En)'} required source="title.en" />
+        <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
+      </GridWrapper>
+      <GridWrapper>
+        <TextInput label={'Açıqlama(Az)'} required source="description.az" />
+        <TextInput label={'Açıqlama(En)'} required source="description.en" />
+        <TextInput label={'Açıqlama(Ru)'} required source="description.ru" />
+      </GridWrapper>
       <ImageInput source="icon" label="Ikon">
         <ImageField source="src" title="icon" />
       </ImageInput>
@@ -42,8 +51,16 @@ export const ServiceEdit = () => (
 export const ServiceCreate = () => (
   <Create>
     <SimpleForm>
-      <TextInput label={'Başlıq'} required source="title" />
-      <TextInput label={'Açıqlama'} required source="description" />
+      <GridWrapper>
+        <TextInput label={'Başlıq(Az)'} required source="title.az" />
+        <TextInput label={'Başlıq(En)'} required source="title.en" />
+        <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
+      </GridWrapper>
+      <GridWrapper>
+        <TextInput label={'Açıqlama(Az)'} required source="description.az" />
+        <TextInput label={'Açıqlama(En)'} required source="description.en" />
+        <TextInput label={'Açıqlama(Ru)'} required source="description.ru" />
+      </GridWrapper>
       <ImageInput source="icon" label="Ikon">
         <ImageField source="src" title="icon" />
       </ImageInput>

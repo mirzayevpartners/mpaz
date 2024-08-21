@@ -1,0 +1,68 @@
+import TopShowLinks from '@/components/TopShowLinks';
+import AboutPageBg from '@/assets/AboutPageBG.png';
+import ContainerWrapper from '@/components/ContainerWrapper';
+import AboutPageBgSmall from '@/assets/AboutPageBgSmall.png';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { Locale } from '@/i18config';
+export default async function Home({ params: { locale } }: { params: { locale: Locale } }) {
+  unstable_setRequestLocale(locale);
+  const t1 = await getTranslations('Common');
+  const t = await getTranslations('AboutPage');
+  const links = [
+    {
+      text: t1('mainPage'),
+      href: '/',
+    },
+    {
+      text: t1('about'),
+      href: '/haqqimizda',
+    },
+  ];
+  return (
+    <div>
+      <TopShowLinks links={links} />
+      <ContainerWrapper className={'flex flex-col gap-y-8 py-8'}>
+        <div>
+          <img src={AboutPageBg.src} className={'hidden sm:block w-full'} />
+          <img src={AboutPageBgSmall.src} className={'block sm:hidden w-full'} />
+        </div>
+        <div className={'flex flex-col items-center gap-y-6'}>
+          <div className={'flex flex-col gap-y-1 items-center'}>
+            <h2 className={'text-secondGold text-[20px] leading-[24.2px]'}>{t('title')}</h2>
+            <h1 className={'font-playfair text-center font-semibold text-mainGreen text-[32px] leading-[42.66px]'}>
+              {t('subtitle')}
+            </h1>
+          </div>
+          <p
+            className={
+              'font-roboto text-base leading-[28px] text-center text-newsText xl:max-w-[70%] md:max-w-[85%] max-w-full'
+            }
+          >
+            “Mirzayev and Partners Law Firm” hüquq şirkəti Sizin problemlərinizi hüquq müstəvisində həll etməyə qadir
+            təcrübəli, müstəqil vəkillərin və hüquqşünasların komandasıdır. Biz hüquqi və fiziki şəxslərin müdafiəsini
+            və ən müxtəlif hüquqi problemlərin, ən mürəkkəb hüquqi məsələlərin müasir həllini təklif edirik. İstər
+            yerli, istərsə də xarici müştərilərin problemlərini həll etməyə hazırıq. Biz “Mirzayev and Partners Law
+            Firm” hüquq şirkətinin gələcəyinə böyük ümidlərlə baxırıq, çox ciddi və iddialı planlarımız vardır. Bizim
+            xidmətlərin keyfiyyəti hüququn bütün sahələri üzrə ekspert səviyyəsində biliklərə və təcrübəyə malik
+            əməkdaşlarımızın olması, hüquq sisteminin fəaliyyətinin xüsusiyyətlərini bilməyimiz, hər bir müştəriyə fərdi
+            və bir tərəfdaş kimi yanaşmağımız, yüksək professionallıq, məlumatların konfidensiallığının qorunması və
+            etik standartlara əməl etməyimizlə bağlıdır. Müştərilərimizlə uzunmüddətli münasibətlərin qurulmasının
+            tərəfdarıyıq. Komandamızın üzvləri Azərbaycan Respublikasının, eləcə də xarici ölkələrin aparıcı hüquq
+            şirkətlərində, dövlət müəssisələrində uzun illər çalışmış, hüququn ayrı-ayrı sahələri üzrə ixtisaslaşmış,
+            müxtəlif beynəlxalq təlimlərdə iştirak etmiş və müsbət iş təcrübəsinə malik olan hüquqşünaslar və
+            vəkillərdir. Biz qanunvericilikdəki dəyişiklikləri diqqətlə izləyirik və günün tələblərinə uyğun olaraq,
+            təklif etdiyimiz xidmətlərin spektrini daim genişləndiririk. Müştərinin mənafeyi tələb edən hər zaman və hər
+            yerdə yanınızdayıq.
+          </p>
+          <div className={'flex flex-col gap-y-1 items-center'}>
+            <h1 className={'font-playfair text-mainGreen font-semibold text-[32px] leading-[42.66px]'}>
+              {t('mission')}
+            </h1>
+            <p className={'font-roboto text-base leading-7 text-center text-newsText'}>{t('missionDescription')}</p>
+          </div>
+        </div>
+        {/*<Separator className={'bg-secondGold h-0.5'} />*/}
+      </ContainerWrapper>
+    </div>
+  );
+}

@@ -32,6 +32,7 @@ const apiObj = {
   AboutUs: ['getAllAboutUs', 'getOneAboutUs'],
   Contact: ['getAllContact', 'getOneContact'],
   Socials: ['getAllSocials', 'getOneSocials'],
+  FormDatas: ['getAllFormDatas', 'getOneFormDatas'],
 };
 
 type Resource =
@@ -47,7 +48,8 @@ type Resource =
   | 'CompanyCounts'
   | 'AboutUs'
   | 'Contact'
-  | 'Socials';
+  | 'Socials'
+  | 'FormDatas';
 
 interface GetListParams {
   pagination: { page: number; perPage: number };

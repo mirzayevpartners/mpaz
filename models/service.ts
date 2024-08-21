@@ -2,8 +2,16 @@ import mongoose from 'mongoose';
 
 const serviceSchema = new mongoose.Schema(
   {
-    title: String,
-    description: String,
+    title: {
+      az: String,
+      en: String,
+      ru: String,
+    },
+    description: {
+      az: String,
+      en: String,
+      ru: String,
+    },
     icon: { src: String, title: String, public_id: String },
     active: { type: Boolean, default: true },
   },

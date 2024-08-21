@@ -1,34 +1,41 @@
 'use client';
 import ContainerWrapper from '@/components/ContainerWrapper';
 import Logo from '@/assets/Logo.svg';
-import Link from 'next/link';
 import ButtonArrowRight from '@/components/custom-ui/ButtonArrowRight';
-import { useEffect, useState } from 'react';
+import { Locale } from '@/i18config';
+import { Turn as Hamburger } from 'hamburger-react';
+import { useHamburgerSidebarStore } from '@/store/HamburgerSidebarStore';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
+interface Props {
+  locale: Locale;
+}
 
-function BottomNavbarLinksNav() {
+function BottomNavbarLinksNav({ locale }: Props) {
+  const t = useTranslations('Navbar');
   const links = [
-    { href: '/', text: 'Ana Səhifə' },
-    { href: '/#ServicesSection', text: 'Xidmətlərimiz' },
-    { href: '/#AboutSection', text: 'Haqqımızda' },
-    { href: '/#TeamSection', text: 'Komandamız' },
-    { href: '/#NewsSection', text: 'Xəbərlər' },
-    { href: '/#MediaSection', text: 'Media' },
-    { href: '/#FaqSection', text: 'FAQ' },
-    { href: '/#CommunicateSection', text: 'Əlaqə' },
+    { href: '/', key: 'home' },
+    { href: '/#ServicesSection', key: 'services' },
+    { href: '/#AboutSection', key: 'about' },
+    { href: '/#TeamSection', key: 'team' },
+    { href: '/#NewsSection', key: 'news' },
+    { href: '/#MediaSection', key: 'media' },
+    { href: '/#FaqSection', key: 'faq' },
+    { href: '/#CommunicateSection', key: 'contact' },
   ];
   return (
-    <nav className={'flex items-center 1000:hidden'}>
+    <nav className={'flex items-center 900:hidden'}>
       {links.map((link, index) => {
         return (
           // <div className={''} key={index}>
           <Link
             key={index}
             className={
-              'border-b-2 border-transparent px-2 py-[1.875rem] text-base leading-[1.21rem] text-black hover:border-b-secondGold'
+              'border-b-2 border-transparent px-2 py-[1.875rem] text-base 1000:text-[14px] leading-[1.21rem] text-black hover:border-b-secondGold'
             }
             href={link.href}
           >
-            {link.text}
+            {t(link.key)}
           </Link>
           // </div>
         );
@@ -37,36 +44,29 @@ function BottomNavbarLinksNav() {
   );
 }
 
-export default function BottomNavbar() {
-  const [scrolled, setScrolled] = useState(false);
+export default function BottomNavbar({ locale }: Props) {
+  const t = useTranslations('Navbar');
+  const { isOpen, open, close } = useHamburgerSidebarStore();
 
-  const handleScroll = () => {
-    const offset = window.scrollY;
-    if (offset >= 47) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
   return (
     <header
-      style={{ top: scrolled ? 0 : 'unset', position: scrolled ? 'fixed' : 'unset' }}
-      className={'BottomNavbar z-[100] flex h-[5.25rem] w-full items-center border-b border-b-myGray bg-white'}
+      // style={{ top: scrolled ? 0 : 'unset', position: scrolled ? 'fixed' : 'unset' }}
+      className={
+        'BottomNavbar sticky top-0 z-[9001] flex h-[5.25rem] w-full items-center border-b border-b-myGray bg-white'
+      }
     >
       <ContainerWrapper>
         <div className={'flex items-center justify-between'}>
           <Link href={'/'}>
             <img src={Logo.src} alt={'logo'} />
           </Link>
-          <BottomNavbarLinksNav />
-          <ButtonArrowRight className={'1240:hidden'} text={'Konsultasiya'} />
+          <BottomNavbarLinksNav locale={locale} />
+          <Link href={'#HPFormSection'} className={'w-fit'}>
+            <ButtonArrowRight className={'1240:hidden'} text={t('consultation')} />
+          </Link>
+          <div className={'hidden 900:inline-block'}>
+            <Hamburger toggled={isOpen} onToggle={(toggled) => (toggled ? open() : close())} size={24} />
+          </div>
         </div>
       </ContainerWrapper>
     </header>

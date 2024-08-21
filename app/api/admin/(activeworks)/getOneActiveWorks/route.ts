@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import { IActiveWorks } from '@/types';
-import { deleteFromCld } from '@/app/action';
+import { deleteFromR2 } from '@/app/action';
 import Activeworks from '@/models/activeworks';
 import { revalidatePath } from 'next/cache';
 
@@ -76,7 +76,7 @@ export async function DELETE(req: NextRequest) {
 
     const public_id_arr = [activeworks.icon.public_id];
     // console.log(public_id_arr);
-    await deleteFromCld(public_id_arr);
+    await deleteFromR2(public_id_arr);
     revalidatePath('/', 'layout');
     return NextResponse.json(activeworks);
   } catch (e) {

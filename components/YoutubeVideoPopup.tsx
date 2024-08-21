@@ -10,7 +10,7 @@ export default function YoutubeVideoPopup() {
   return (
     <div
       className={
-        'flex justify-center items-center fixed top-0 left-0 w-full h-full z-[9000] opacity-100 bg-[#00000080]'
+        'flex justify-center items-center fixed top-0 left-0 w-full h-full z-[9002] opacity-100 bg-[#00000080]'
       }
     >
       <YoutubeVideoIframe videoId={videoId} />

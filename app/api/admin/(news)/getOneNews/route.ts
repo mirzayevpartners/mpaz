@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import News from '@/models/news';
 import { INews } from '@/types';
-import { deleteFromCld } from '@/app/action';
+import { deleteFromR2 } from '@/app/action';
 import { revalidatePath } from 'next/cache';
 
 export async function GET(req: NextRequest) {
@@ -81,7 +81,7 @@ export async function DELETE(req: NextRequest) {
       });
     }
     // console.log(public_id_arr);
-    await deleteFromCld(public_id_arr);
+    await deleteFromR2(public_id_arr);
     revalidatePath('/', 'layout');
     return NextResponse.json(news);
   } catch (e) {

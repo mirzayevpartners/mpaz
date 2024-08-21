@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import { ICompany} from '@/types';
-import { deleteFromCld } from '@/app/action';
+import { ICompany } from '@/types';
 import Company from '@/models/company';
 import { revalidatePath } from 'next/cache';
+import { deleteFromR2 } from '@/app/action';
 
 export async function GET(req: NextRequest) {
   try {
@@ -76,7 +76,7 @@ export async function DELETE(req: NextRequest) {
 
     const public_id_arr = [company.image.public_id];
     // console.log(public_id_arr);
-    await deleteFromCld(public_id_arr);
+    await deleteFromR2(public_id_arr);
     revalidatePath('/', 'layout');
     return NextResponse.json(company);
   } catch (e) {

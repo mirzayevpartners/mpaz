@@ -1,8 +1,16 @@
 import ContainerWrapper from '@/components/ContainerWrapper';
 import HPAboutImg from '@/assets/HPAboutImg.png';
 import ButtonArrowRight from '@/components/custom-ui/ButtonArrowRight';
-import Link from 'next/link';
-export default function HPAboutSection() {
+import { Locale } from '@/i18config';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { Link } from '@/navigation';
+
+interface Props {
+  locale: Locale;
+}
+export default async function HPAboutSection({ locale }: Props) {
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations('Homepage_AboutSection');
   return (
     <section id={'AboutSection'} className={'bg-white py-28'}>
       <ContainerWrapper
@@ -15,13 +23,13 @@ export default function HPAboutSection() {
         <div className={'flex max-w-[50%] flex-col gap-y-[14px] 1000:max-w-full'}>
           <div className={'flex flex-col gap-y-[23px]'}>
             <div className={'flex flex-col gap-y-1'}>
-              <h5 className={'text-base leading-[1.21rem] text-secondGold'}>HAQQIMIZDA</h5>
+              <h5 className={'text-base leading-[1.21rem] text-secondGold'}>{t('title')}</h5>
               <h1
                 className={
                   'font-playfair max-w-[20ch] text-[2rem] font-semibold leading-[2.666rem] text-mainGreen 500:text-[28px] 500:leading-[37.32px]'
                 }
               >
-                “Mirzəyev və partnyorları şirkəti kimdir
+                {t('subtitle')}
               </h1>
             </div>
             <p className={'max-w-[50ch] text-base leading-7 text-newsText'}>
@@ -32,7 +40,7 @@ export default function HPAboutSection() {
             </p>
           </div>
           <Link className={'w-fit'} href={'/haqqimizda'}>
-            <ButtonArrowRight className={'w-fit 500:w-full 500:justify-center'} text={'Daha ətraflı'} />
+            <ButtonArrowRight className={'w-fit 500:w-full 500:justify-center'} text={t('button')} />
           </Link>
         </div>
       </ContainerWrapper>

@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { INews } from '@/types';
 import { dateConverterWithTime } from '@/lib/dateConverter';
 import DynamicText from '@/components/DynamicText';
+import { Locale } from '@/i18config';
 
-export default function SingleNewsFullCard({ news }: { news: INews }) {
+export default function SingleNewsFullCard({ news, locale }: { news: INews; locale: Locale }) {
   const socialIcons = [
     { href: '/', icon: <FaFacebookF className={'text-white'} size={15} /> },
     { href: '/', icon: <FaTwitter className={'text-white'} size={15} /> },
@@ -31,13 +32,13 @@ export default function SingleNewsFullCard({ news }: { news: INews }) {
                   'font-playfair font-bold text-[28px] leading-[44.99px] sm:text-[40px] sm:leading-[53.07px] text-mainGreen'
                 }
               >
-                {news.title}
+                {news.title[locale]}
               </h1>
             </div>
           </div>
           <NewsImgSlider imgs={news.images} />
         </div>
-        <DynamicText className={'font-roboto text-base leading-7 text-newsText'} htmlString={news.content} />
+        <DynamicText className={'font-roboto text-base leading-7 text-newsText'} htmlString={news.content[locale]} />
       </div>
       <div className={'h-16 border-t border-t-myGray flex items-center justify-center pt-5 sm:pt-0 sm:justify-start'}>
         <div className={'flex items-center gap-x-8 flex-col gap-y-4 sm:flex-row'}>

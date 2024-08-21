@@ -1,4 +1,11 @@
+export interface ILanguage {
+  az: string;
+  en: string;
+  ru: string;
+}
+
 interface ImageType {
+  rawFile: any;
   src: string;
   title: string;
   _id: string;
@@ -7,10 +14,10 @@ interface ImageType {
 
 export interface INews {
   _id: string;
-  title: string;
+  title: ILanguage;
   slug: string;
-  slugTitle: string;
-  content: string;
+  slugTitle: ILanguage;
+  content: ILanguage;
   images: ImageType[];
   mainImage: ImageType;
   active: boolean;
@@ -19,9 +26,9 @@ export interface INews {
 }
 export interface ITeam {
   _id: string;
-  fullName: string;
+  fullName: ILanguage;
+  profession: ILanguage;
   email: string;
-  profession: string;
   photo: ImageType;
   active: boolean;
   createdAt: string;
@@ -29,32 +36,39 @@ export interface ITeam {
 }
 export interface IService {
   _id: string;
-  title: string;
-  description: string;
+  title: ILanguage;
+  description: ILanguage;
   icon: ImageType;
   active: boolean;
   createdAt: string;
   updatedAt: string;
 }
+
+export interface GalleryImageType {
+  _id: string;
+  imageTitle: ILanguage;
+  src: Omit<ImageType, '_id'>; //not have _id
+}
+
 export interface IGallery {
   _id: string;
-  title: string;
+  title: ILanguage;
   customDate: string;
-  images: ImageType[];
+  images: GalleryImageType[];
   active: boolean;
   createdAt: string;
   updatedAt: string;
 }
 
 interface VideoType {
-  src: string;
-  title: string;
   _id: string;
+  title: ILanguage;
+  src: string;
 }
 
 export interface IVideo {
   _id: string;
-  title: string;
+  title: ILanguage;
   customDate: string;
   videos: VideoType[];
   active: boolean;
@@ -64,9 +78,9 @@ export interface IVideo {
 
 export interface ITestimonial {
   _id: string;
-  fullName: string;
-  title: string;
-  text: string;
+  fullName: ILanguage;
+  title: ILanguage;
+  text: ILanguage;
   rating: number;
   photo: ImageType;
   active: boolean;
@@ -83,8 +97,8 @@ export interface ICompany {
 
 export interface IQuestion {
   _id: string;
-  question: string;
-  answer: string;
+  question: ILanguage;
+  answer: ILanguage;
   active: boolean;
   createdAt: string;
   updatedAt: string;
@@ -92,7 +106,7 @@ export interface IQuestion {
 
 export interface IActiveWorks {
   _id: string;
-  title: string;
+  title: ILanguage;
   number: string;
   icon: ImageType;
   createdAt: string;
@@ -101,7 +115,7 @@ export interface IActiveWorks {
 
 export interface ICompanyCounts {
   _id: string;
-  title: string;
+  title: ILanguage;
   number: string;
   icon: ImageType;
   createdAt: string;
@@ -110,8 +124,8 @@ export interface ICompanyCounts {
 
 export interface IAboutUs {
   _id: string;
+  text: ILanguage;
   image: ImageType;
-  text: string;
 }
 
 export interface IContact {
@@ -128,4 +142,12 @@ export interface ISocials {
   link: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface IFormDetails {
+  fullName: string;
+  phoneNumber: string;
+  emailAddress: string;
+  customDate: Date;
+  firstTime: boolean;
 }

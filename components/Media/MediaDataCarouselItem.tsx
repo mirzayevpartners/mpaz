@@ -3,17 +3,31 @@ import { AiOutlineClockCircle } from 'react-icons/ai';
 import { CarouselItem } from '@/components/ui/carousel';
 import getVideoId from 'get-video-id';
 import VideoCard from '@/components/Media/VideoCard';
+import { cn } from '@/lib/utils';
 interface MediaDataCarouselItemProps {
   type: 'video' | 'gallery';
   videoSrc?: string;
   videoTitle?: string;
   gallerySrc?: string;
+  imgClassname?: string;
+  itemClassName?: string;
 }
 
-export default function MediaDataCarouselItem({ type, videoSrc, videoTitle, gallerySrc }: MediaDataCarouselItemProps) {
+export default function MediaDataCarouselItem({
+  type,
+  videoSrc,
+  videoTitle,
+  gallerySrc,
+  imgClassname,
+  itemClassName,
+}: MediaDataCarouselItemProps) {
   return (
-    <CarouselItem className={'basis-2/3 sm:basis-1/3 min1080:basis-full flex flex-col gap-y-4'}>
-      <div className={'w-[305px] h-[172px]'}>
+    <CarouselItem
+      className={
+        'flex flex-col gap-y-2 basis-full min400:basis-[85%] min500:basis-[75%] min600:basis-[65%] min700:basis-[55%] min800:basis-[45%] min900:basis-[40%] min1080:basis-1/3'
+      }
+    >
+      <div className={cn('w-[305px] h-[172px]', imgClassname)}>
         {type === 'gallery' ? (
           <img className={'size-full'} src={gallerySrc} alt={'photo'} />
         ) : (

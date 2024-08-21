@@ -15,6 +15,7 @@ import {
   ArrayInput,
   SimpleFormIterator,
 } from 'react-admin';
+import GridWrapper from '@/components/Admin/GridWrapper';
 
 const VideoField = (props: any) => {
   const record = useRecordContext(props);
@@ -24,7 +25,7 @@ const VideoField = (props: any) => {
 export const VideoList = () => (
   <List>
     <Datagrid bulkActionButtons={false} rowClick="edit">
-      <TextField label={'Başlıq'} source="title" />
+      <TextField label={'Başlıq(Az)'} source="title.az" />
       <DateField source={'customDate'} label="Tarix" />
       <BooleanField label={'Aktiv'} source="active" />
     </Datagrid>
@@ -34,7 +35,11 @@ export const VideoList = () => (
 export const VideoEdit = () => (
   <Edit>
     <SimpleForm>
-      <TextInput label={'Başlıq'} required source="title" />
+      <GridWrapper>
+        <TextInput label={'Başlıq(Az)'} required source="title.az" />
+        <TextInput label={'Başlıq(En)'} required source="title.en" />
+        <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
+      </GridWrapper>
       <DateInput source={'customDate'} label={'Tarix'} />
       {/*<FileInput multiple={true} source="videos">*/}
       {/*  <VideoField src={'src'} />*/}
@@ -42,7 +47,9 @@ export const VideoEdit = () => (
       <ArrayInput label={'Video linkləri(Youtube)'} source={'videos'}>
         <SimpleFormIterator>
           <TextInput source={'src'} label={'Link'} />
-          <TextInput source={'title'} label={'Başlıq'} />
+          <TextInput source={'title.az'} label={'Video Başlıq(Az)'} />
+          <TextInput source={'title.en'} label={'Video Başlıq(En)'} />
+          <TextInput source={'title.ru'} label={'Video Başlıq(Ru)'} />
         </SimpleFormIterator>
       </ArrayInput>
       <BooleanInput label={'Aktiv'} source="active" />
@@ -53,7 +60,11 @@ export const VideoEdit = () => (
 export const VideoCreate = () => (
   <Create>
     <SimpleForm>
-      <TextInput label={'Başlıq'} required source="title" />
+      <GridWrapper>
+        <TextInput label={'Başlıq(Az)'} required source="title.az" />
+        <TextInput label={'Başlıq(En)'} required source="title.en" />
+        <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
+      </GridWrapper>
       <DateInput source={'customDate'} label={'Tarix'} />
       {/*<FileInput multiple={true} source="videos">*/}
       {/*  <VideoField src={'src'} />*/}
@@ -61,7 +72,9 @@ export const VideoCreate = () => (
       <ArrayInput label={'Video linkləri(Youtube)'} source={'videos'}>
         <SimpleFormIterator>
           <TextInput source={'src'} label={'Link'} />
-          <TextInput source={'title'} label={'Başlıq'} />
+          <TextInput source={'title.az'} label={'Video Başlıq(Az)'} />
+          <TextInput source={'title.en'} label={'Video Başlıq(En)'} />
+          <TextInput source={'title.ru'} label={'Video Başlıq(Ru)'} />
         </SimpleFormIterator>
       </ArrayInput>
       <BooleanInput label={'Aktiv'} source="active" />

@@ -9,13 +9,13 @@ import {
   BooleanField,
   BooleanInput,
 } from 'react-admin';
-import { ListActions } from '@/components/Admin/ListActions';
+import GridWrapper from '@/components/Admin/GridWrapper';
 
 export const QuestionList = () => (
   <List>
     <Datagrid bulkActionButtons={false} rowClick="edit">
-      <TextField label={'Sual'} source="question" />
-      <TextField label={'Cavab'} source="answer" />
+      <TextField label={'Sual(Az)'} source="question.az" />
+      <TextField label={'Cavab(Az)'} source="answer.az" />
       <BooleanField label={'Aktiv'} source="active" />
     </Datagrid>
   </List>
@@ -24,8 +24,16 @@ export const QuestionList = () => (
 export const QuestionEdit = () => (
   <Edit>
     <SimpleForm>
-      <TextInput multiline={true} label={'Sual'} required source="question" />
-      <TextInput multiline={true} label={'Cavab'} required source="answer" />
+      <GridWrapper>
+        <TextInput multiline={true} label={'Sual(Az)'} required source="question.az" />
+        <TextInput multiline={true} label={'Sual(En)'} required source="question.en" />
+        <TextInput multiline={true} label={'Sual(Ru)'} required source="question.ru" />
+      </GridWrapper>
+      <GridWrapper>
+        <TextInput multiline={true} label={'Cavab(Az)'} required source="answer.az" />
+        <TextInput multiline={true} label={'Cavab(En)'} required source="answer.en" />
+        <TextInput multiline={true} label={'Cavab(Ru)'} required source="answer.ru" />
+      </GridWrapper>
       <BooleanInput label={'Aktiv'} source="active" />
     </SimpleForm>
   </Edit>
@@ -34,8 +42,16 @@ export const QuestionEdit = () => (
 export const QuestionCreate = () => (
   <Create>
     <SimpleForm>
-      <TextInput multiline={true} label={'Sual'} required source="question" />
-      <TextInput multiline={true} label={'Cavab'} required source="answer" />
+      <GridWrapper>
+        <TextInput multiline={true} label={'Sual(Az)'} required source="question.az" />
+        <TextInput multiline={true} label={'Sual(En)'} required source="question.en" />
+        <TextInput multiline={true} label={'Sual(Ru)'} required source="question.ru" />
+      </GridWrapper>
+      <GridWrapper>
+        <TextInput multiline={true} label={'Cavab(Az)'} required source="answer.az" />
+        <TextInput multiline={true} label={'Cavab(En)'} required source="answer.en" />
+        <TextInput multiline={true} label={'Cavab(Ru)'} required source="answer.ru" />
+      </GridWrapper>
       <BooleanInput label={'Aktiv'} source="active" />
     </SimpleForm>
   </Create>

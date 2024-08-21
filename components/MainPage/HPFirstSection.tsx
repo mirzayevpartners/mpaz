@@ -9,12 +9,22 @@ import { IActiveWorks } from '@/types';
 import dbConnect from '@/lib/db';
 import Activeworks from '@/models/activeworks';
 import NumberAnimation from '@/components/NumberAnimation';
-export default async function HPFirstSection() {
+import { Locale } from '@/i18config';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { Link } from '@/navigation';
+interface Props {
+  locale: Locale;
+}
+
+export default async function HPFirstSection({ locale }: Props) {
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations('Homepage_Section1');
   let activeWorks: IActiveWorks[] = [];
   try {
     await dbConnect();
     activeWorks = await Activeworks.find({});
   } catch (e) {
+    console.log(e);
     return <div>Server Error</div>;
   }
   return (
@@ -34,14 +44,14 @@ export default async function HPFirstSection() {
                   'font-playfair text-[2.25rem] font-bold leading-[2.78rem] tracking-[-0.4px] text-mainGreen lg:text-[3.5rem] lg:leading-[4.943rem] xl:text-[4rem]'
                 }
               >
-                Peşəkarlara <br /> etibar etmək vaxtıdır!
+                {t('title')}
               </h1>
               <p className={' font-base w-[90%] max-w-[60ch] leading-7 tracking-[-2.5%] text-mainGreen 800:!w-full'}>
-                Figma ipsum component variant main layer. Project content scale fill asset auto ipsum pencil style.
-                Reesizing vertical pixel vector horizontal. Figma ipsum component variant main layer. Project content
-                scale fill asset auto ipsum pencil style. Reesizing vertical pixel vector horizontal.{' '}
+                {t('description')}
               </p>
-              <ButtonArrowRight className={'w-fit 450:!w-full 450:justify-center'} text={'Rezervasiya'} />
+              <Link href={'#HPFormSection'} className={'w-fit'}>
+                <ButtonArrowRight className={'w-fit 450:!w-full 450:justify-center'} text={t('reservation')} />
+              </Link>
             </div>
             <div className={'flex-1'}>
               <div className={'relative 800:max-w-full max-w-[90%] h-full bg-paleGold'}>
@@ -59,7 +69,7 @@ export default async function HPFirstSection() {
                     </div>
                     <div className={'absolute bottom-3 px-2'}>
                       <h3 className={'800:text-xs text-white text-sm leading-[16.94px] text-left tracking-[-0.025em]'}>
-                        Lorem ipsum doler sit amet
+                        {t('star')}
                       </h3>
                     </div>
                   </div>
@@ -70,11 +80,18 @@ export default async function HPFirstSection() {
                   }
                 >
                   <div className={'flex size-[4.25rem] items-center justify-center rounded-full bg-paleGold'}>
-                    <img src={activeWorks[0].icon.src} alt={'Hammer Icon'} className={'HAMMER size-7'} />
+                    <img
+                      src={activeWorks[0]?.icon?.src || HammerIcon.src}
+                      alt={'Hammer Icon'}
+                      className={'HAMMER size-7'}
+                    />
                   </div>
                   <div className={'flex flex-col items-center text-white'}>
-                    <h6 className={'text-sm uppercase'}>{activeWorks[0].title}</h6>
-                    <NumberAnimation className={'w-[100px] font-bold text-[3rem]'} number={+activeWorks[0].number} />
+                    <h6 className={'text-sm uppercase'}>{activeWorks[0]?.title[locale] || 'Aktiv işlər'}</h6>
+                    <NumberAnimation
+                      className={'w-[100px] font-bold text-[3rem]'}
+                      number={+activeWorks[0]?.number || 324}
+                    />
                   </div>
                 </div>
               </div>

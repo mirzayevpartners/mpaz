@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
-import News from '@/models/news';
 import { IContact, INews } from '@/types';
-import { deleteFromCld } from '@/app/action';
 import { revalidatePath } from 'next/cache';
 import Contact from '@/models/contact';
 

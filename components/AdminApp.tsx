@@ -18,6 +18,7 @@ import { AboutUsCreate, AboutUsEdit, AboutUsList } from '@/components/Admin/Abou
 import { ContactCreate, ContactEdit, ContactList } from '@/components/Admin/Contact';
 import { SocialsCreate, SocialsEdit, SocialsList } from '@/components/Admin/Socials';
 import authProvider from '@/components/Admin/authProvider';
+import { FormDatasEdit, FormDatasList } from '@/components/Admin/FormDatas';
 
 // BottomNavbar TopNavbar Footer
 const AdminApp = () => {
@@ -61,6 +62,7 @@ const AdminApp = () => {
       {/*<Resource name={'AboutUs'} list={AboutUsList} edit={AboutUsEdit} create={AboutUsCreate} />*/}
       <Resource name={'Contact'} list={ContactList} edit={ContactEdit} create={ContactCreate} />
       <Resource name={'Socials'} list={SocialsList} edit={SocialsEdit} create={SocialsCreate} />
+      <Resource name={'FormDatas'} list={FormDatasList} edit={FormDatasEdit} />
     </Admin>
   );
 };

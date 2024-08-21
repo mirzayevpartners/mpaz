@@ -1,0 +1,106 @@
+{
+  "Navbar": {
+    "home": "домой",
+    "services": "услуги",
+    "about": "о нас",
+    "team": "команда",
+    "news": "новости",
+    "media": "медиа",
+    "faq": "FAQ",
+    "contact": "контакт",
+    "consultation": "консультация"
+  },
+  "Homepage_Section1": {
+    "title": "Время довериться профессионалам!",
+    "description": "Figma ipsum компонент вариант основной слой. Содержимое проекта масштабировать, заполнить актив автоматически ipsum pencil style. Изменение размера по вертикали пиксель вектор горизонтальный. Figma ipsum компонент вариант основной слой. Содержимое проекта масштабировать, заполнить актив автоматически ipsum pencil style. Изменение размера по вертикали пиксель вектор горизонтальный.",
+    "reservation": "Бронирование",
+    "star": "Lorem ipsum doler sit amet"
+  },
+  "Homepage_FormSection": {
+    "imageTitle": "Подать заявку на консультацию",
+    "imageDescription": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id",
+    "title": "Форма заявки",
+    "fullName": "Ваше Полное Имя",
+    "phone": "Ваш Номер Телефона",
+    "email": "Ваш Адрес Электронной Почты",
+    "firstTime": "Первый Раз на Консультации",
+    "send": "Отправить",
+    "successMessage": "Ваш запрос отправлен. Мы свяжемся с вами в ближайшее время.",
+    "errorMessage": "Что-то пошло не так. Пожалуйста, попробуйте еще раз."
+  },
+  "Homepage_ServicesSection": {
+    "title": "Доступно",
+    "subtitle": "Услуги",
+    "description": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id",
+    "button": "Все Услуги"
+  },
+  "Homepage_AboutSection": {
+    "title": "О Нас",
+    "subtitle": "“Кто такие компания Мирзаев и Партнеры",
+    "button": "Подробнее"
+  },
+  "Homepage_TeamSection": {
+    "title": "Познакомьтесь с нашими профессиональными партнерами!",
+    "description": "Lorem ipsum dolor sit amet consectetur. Adipiscing mollis facilisis adipiscing facilisis auctor id quam. Arcu a quisque amet facilisis orci egestas",
+    "button": "Вся наша команда"
+  },
+  "Homepage_NewsSection": {
+    "title": "Связано с нами",
+    "subtitle": "Чтобы следить за новостями и обновлениями",
+    "button": "Просмотреть все новости"
+  },
+  "Homepage_MediaSection": {
+    "title": "Медиа",
+    "subtitle": "Наша галерея фотографий и видео",
+    "description": "Lorem ipsum dolor sit amet consectetur. Adipiscing mollis facilisis adipiscing facilisis auctor id quam. Arcu a quisque amet facilisis orci egestas sed sed volutpat.",
+    "button": "Просмотреть всю галерею"
+  },
+  "Homepage_TestimonialsSection": {
+    "title": "Удовлетворенность клиентов",
+    "subtitle": "Мнения о нас"
+  },
+  "Homepage_CompaniesSection": {
+    "title": "Те, кто выбирает нас",
+    "subtitle": "Компании-партнеры"
+  },
+  "Homepage_FaqSection": {
+    "title": "Часто задаваемые вопросы",
+    "subtitle": "Наиболее часто задаваемые вопросы"
+  },
+  "Common": {
+    "mainPage": "Главная страница",
+    "news": "Новости",
+    "media": "Медиа",
+    "team": "Команда",
+    "services": "Услуги",
+    "about": "О нас",
+    "searchPage": "Страница поиска"
+  },
+  "MediaPage": {
+    "videos": "Видео",
+    "photos": "Фотографии",
+    "allVideos": "Все видео",
+    "allPhotos": "Все фотографии",
+    "mediaTitle": "Наша галерея фотографий и видео",
+    "search": "Поиск по галерее"
+  },
+  "TeamPage": {
+    "title": "Наша команда",
+    "subtitle": "Познакомьтесь с нашими профессиональными партнерами!",
+    "description": "Lorem ipsum dolor sit amet consectetur. Adipiscing mollis facilisis adipiscing facilisis auctor id quam. Arcu a quisque amet facilisis orci egestas"
+  },
+  "ServicesPage": {
+    "title": "Доступно",
+    "subtitle": "Наши Услуги",
+    "description": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id"
+  },
+  "AboutPage": {
+    "title": "О Нас",
+    "subtitle": "Кто такие компания Мирзаев и Партнеры",
+    "mission": "Наша миссия",
+    "missionDescription": "Мы добиваемся справедливости, полагаясь на наши знания и ответственность."
+  },
+  "HomePage": {
+    "title": "Главная страница"
+  }
+}

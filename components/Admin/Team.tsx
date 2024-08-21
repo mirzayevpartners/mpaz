@@ -1,27 +1,24 @@
 import {
   Datagrid,
-  EmailField,
   List,
   TextField,
   Edit,
   SimpleForm,
   TextInput,
   Create,
-  useRecordContext,
   ImageInput,
   ImageField,
   BooleanField,
   BooleanInput,
-  RichTextField,
 } from 'react-admin';
-import RichInput from '@/components/Admin/RichInput';
+import GridWrapper from '@/components/Admin/GridWrapper';
 
 export const TeamList = () => (
   <List>
     <Datagrid bulkActionButtons={false} rowClick="edit">
-      <TextField label={'Ad Soyad'} source="fullName" />
+      <TextField label={'Ad Soyad(Az)'} source="fullName.az" />
+      <TextField label={'Peşə(Az)'} source="profession.az" />
       <TextField label={'Email'} source="email" />
-      <TextField label={'Peşə'} source="profession" />
       <BooleanField label={'Aktiv'} source="active" />
     </Datagrid>
   </List>
@@ -30,9 +27,17 @@ export const TeamList = () => (
 export const TeamEdit = () => (
   <Edit>
     <SimpleForm>
-      <TextInput label={'Ad Soyad'} required source="fullName" />
+      <GridWrapper>
+        <TextInput label={'Ad Soyad(Az)'} required source="fullName.az" />
+        <TextInput label={'Ad Soyad(En)'} required source="fullName.en" />
+        <TextInput label={'Ad Soyad(Ru)'} required source="fullName.ru" />
+      </GridWrapper>
+      <GridWrapper>
+        <TextInput label={'Peşə(Az)'} required source="profession.az" />
+        <TextInput label={'Peşə(En)'} required source="profession.en" />
+        <TextInput label={'Peşə(Ru)'} required source="profession.ru" />
+      </GridWrapper>
       <TextInput label={'Email'} required source="email" />
-      <TextInput label={'Peşə'} required source="profession" />
       <ImageInput source="photo" label="Şəkil">
         <ImageField source="src" title="photo" />
       </ImageInput>
@@ -44,9 +49,17 @@ export const TeamEdit = () => (
 export const TeamCreate = () => (
   <Create>
     <SimpleForm>
-      <TextInput label={'Ad Soyad'} required source="fullName" />
+      <GridWrapper>
+        <TextInput label={'Ad Soyad(Az)'} required source="fullName.az" />
+        <TextInput label={'Ad Soyad(En)'} required source="fullName.en" />
+        <TextInput label={'Ad Soyad(Ru)'} required source="fullName.ru" />
+      </GridWrapper>
+      <GridWrapper>
+        <TextInput label={'Peşə(Az)'} required source="profession.az" />
+        <TextInput label={'Peşə(En)'} required source="profession.en" />
+        <TextInput label={'Peşə(Ru)'} required source="profession.ru" />
+      </GridWrapper>
       <TextInput label={'Email'} required source="email" />
-      <TextInput label={'Peşə'} required source="profession" />
       <ImageInput source="photo" label="Şəkil">
         <ImageField source="src" title="photo" />
       </ImageInput>

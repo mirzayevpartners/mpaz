@@ -2,7 +2,11 @@ import mongoose from 'mongoose';
 
 const companyCountsSchema = new mongoose.Schema(
   {
-    title: String,
+    title: {
+      az: String,
+      en: String,
+      ru: String,
+    },
     number: String,
     icon: { src: String, title: String, public_id: String },
   },

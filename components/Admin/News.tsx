@@ -1,6 +1,5 @@
 import {
   Datagrid,
-  EmailField,
   List,
   TextField,
   Edit,
@@ -15,20 +14,20 @@ import {
   RichTextField,
 } from 'react-admin';
 import RichInput from '@/components/Admin/RichInput';
+import GridWrapper from '@/components/Admin/GridWrapper';
 
-const NewsContentShow = () => {
-  const record = useRecordContext();
-  // @ts-expect-error content is not defined in type
-  record.content = record.content.length > 100 ? `${record.content.slice(0, 100)}...` : record.content;
-  return <RichTextField label={'Kontent'} source="content" record={record} />;
-};
+// const NewsContentShow = () => {
+//   const record = useRecordContext();
+//   // @ts-expect-error content is not defined in type
+//   record.content = record.content.length > 50 ? `${record.content.slice(0, 50)}...` : record.content;
+//   return <TextField label={'Kontent(Az)'} record={record} />;
+// };
 export const NewsList = () => (
   <List>
     <Datagrid bulkActionButtons={false} rowClick="edit">
-      <TextField label={'Başlıq'} source="title" />
+      <TextField label={'Başlıq(Az)'} source="title.az" />
       <TextField label={'Link'} source="slug" />
-      <TextField label={'Link Başlıq'} source="slugTitle" />
-      <NewsContentShow />
+      <TextField label={'Link Başlıq(Az)'} source="slugTitle.az" />
       {/*<RichTextField source="content" />*/}
       <BooleanField label={'Aktiv'} source="active" />
     </Datagrid>
@@ -38,14 +37,26 @@ export const NewsList = () => (
 export const NewsEdit = () => (
   <Edit>
     <SimpleForm>
-      <TextInput label={'Başlıq'} required source="title" />
+      <GridWrapper>
+        <TextInput label={'Başlıq(Az)'} required source="title.az" />
+        <TextInput label={'Başlıq(En)'} required source="title.en" />
+        <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
+      </GridWrapper>
       <TextInput label={'Link'} required source="slug" />
-      <TextInput label={'Link Başlıq'} required source="slugTitle" />
-      <RichInput label={'Kontent'} source="content" />
-      <ImageInput source="mainImage" label="Main image">
+      <GridWrapper>
+        <TextInput label={'Link Başlıq(Az)'} required source="slugTitle.az" />
+        <TextInput label={'Link Başlıq(En)'} required source="slugTitle.en" />
+        <TextInput label={'Link Başlıq(Ru)'} required source="slugTitle.ru" />
+      </GridWrapper>
+      <GridWrapper>
+        <RichInput label={'Kontent(Az)'} source="content.az" />
+        <RichInput label={'Kontent(En)'} source="content.en" />
+        <RichInput label={'Kontent(Ru)'} source="content.ru" />
+      </GridWrapper>
+      <ImageInput source="mainImage" label="Qapaq şəkli">
         <ImageField source="src" title="New image" />
       </ImageInput>
-      <ImageInput multiple={true} source="images" label="Images">
+      <ImageInput multiple={true} source="images" label="Bütün şəkillər">
         <ImageField source="src" title="New image" />
       </ImageInput>
       <BooleanInput label={'Aktiv'} source="active" />
@@ -56,15 +67,26 @@ export const NewsEdit = () => (
 export const NewsCreate = () => (
   <Create>
     <SimpleForm>
-      <TextInput label={'Başlıq'} required source="title" />
+      <GridWrapper>
+        <TextInput label={'Başlıq(Az)'} required source="title.az" />
+        <TextInput label={'Başlıq(En)'} required source="title.en" />
+        <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
+      </GridWrapper>
       <TextInput label={'Link'} required source="slug" />
-      <TextInput label={'Link Başlıq'} required source="slugTitle" />
-      {/*<TextInput required source="content" />*/}
-      <RichInput label={'Kontent'} source="content" label="Content" />
-      <ImageInput source="mainImage" label="Main image">
+      <GridWrapper>
+        <TextInput label={'Link Başlıq(Az)'} required source="slugTitle.az" />
+        <TextInput label={'Link Başlıq(En)'} required source="slugTitle.en" />
+        <TextInput label={'Link Başlıq(Ru)'} required source="slugTitle.ru" />
+      </GridWrapper>
+      <GridWrapper>
+        <RichInput label={'Kontent(Az)'} source="content.az" />
+        <RichInput label={'Kontent(En)'} source="content.en" />
+        <RichInput label={'Kontent(Ru)'} source="content.ru" />
+      </GridWrapper>
+      <ImageInput source="mainImage" label="Qapaq şəkli">
         <ImageField source="src" title="New image" />
       </ImageInput>
-      <ImageInput multiple={true} source="images" label="Images">
+      <ImageInput multiple={true} source="images" label="Bütün şəkillər">
         <ImageField source="src" title="New image" />
       </ImageInput>
       <BooleanInput label={'Aktiv'} source="active" />
