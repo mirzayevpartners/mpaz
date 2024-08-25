@@ -165,9 +165,9 @@ export async function gallerySearchAction(title: 'video' | 'photo', query: strin
   try {
     await dbConnect();
     let data: IVideo[] | IGallery[];
+    const path = locale === 'az' ? 'title.az' : locale === 'en' ? 'title.en' : 'title.ru';
     if (title === 'video') {
-      const path = locale === 'az' ? 'title.az' : locale === 'en' ? 'title.en' : 'title.ru';
-      data = await Video.aggregate([
+      data = (await Video.aggregate([
         {
           $search: {
             index: 'searchvideo',
@@ -184,9 +184,9 @@ export async function gallerySearchAction(title: 'video' | 'photo', query: strin
         {
           $sort: { customDate: -1 },
         },
-      ]);
+      ])) as IVideo[];
     } else if (title === 'photo') {
-      data = await Gallery.aggregate([
+      data = (await Gallery.aggregate([
         {
           $search: {
             index: 'gallerysearch',
@@ -203,8 +203,9 @@ export async function gallerySearchAction(title: 'video' | 'photo', query: strin
         {
           $sort: { customDate: -1 },
         },
-      ]);
+      ])) as IGallery[];
     }
+    // @ts-expect-error data is not empty
     return JSON.parse(JSON.stringify(data));
   } catch (e) {
     return [];

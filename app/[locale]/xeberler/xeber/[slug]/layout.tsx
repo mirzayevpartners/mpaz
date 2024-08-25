@@ -12,5 +12,5 @@ export async function generateStaticParams() {
 }
 
 export default function SingleNewsLayout({ children }: { children: React.ReactNode }) {
-  return { children };
+  return <>{children}</>;
 }
