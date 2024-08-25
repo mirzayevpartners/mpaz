@@ -17,7 +17,7 @@ async function HPServicesCases({ locale }: Props) {
   let services: IService[] = [];
   try {
     await dbConnect();
-    services = await Service.find().limit(4);
+    services = await Service.find({ active: true }).limit(4);
   } catch (e) {
     console.log(e);
     return <div>Server Error</div>;
@@ -25,15 +25,7 @@ async function HPServicesCases({ locale }: Props) {
   return (
     <div className={'grid w-full grid-cols-4 500:!grid-cols-1 1080:grid-cols-2'}>
       {services.map((item, index) => {
-        return (
-          <ServiceCard
-            key={item._id}
-            index={index}
-            iconUrl={item.icon.src}
-            title={item.title[locale]}
-            text={item.description[locale]}
-          />
-        );
+        return <ServiceCard key={item._id} index={index} title={item.title[locale]} text={item.description[locale]} />;
       })}
     </div>
   );

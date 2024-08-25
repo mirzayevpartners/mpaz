@@ -40,16 +40,16 @@ export const VideoEdit = () => (
         <TextInput label={'Başlıq(En)'} required source="title.en" />
         <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
       </GridWrapper>
-      <DateInput source={'customDate'} label={'Tarix'} />
+      <DateInput required source={'customDate'} label={'Tarix'} />
       {/*<FileInput multiple={true} source="videos">*/}
       {/*  <VideoField src={'src'} />*/}
       {/*</FileInput>*/}
-      <ArrayInput label={'Video linkləri(Youtube)'} source={'videos'}>
+      <ArrayInput required label={'Video linkləri(Youtube)'} source={'videos'}>
         <SimpleFormIterator>
-          <TextInput source={'src'} label={'Link'} />
-          <TextInput source={'title.az'} label={'Video Başlıq(Az)'} />
-          <TextInput source={'title.en'} label={'Video Başlıq(En)'} />
-          <TextInput source={'title.ru'} label={'Video Başlıq(Ru)'} />
+          <TextInput required source={'src'} label={'Link'} />
+          <TextInput required source={'title.az'} label={'Video Başlıq(Az)'} />
+          <TextInput required source={'title.en'} label={'Video Başlıq(En)'} />
+          <TextInput required source={'title.ru'} label={'Video Başlıq(Ru)'} />
         </SimpleFormIterator>
       </ArrayInput>
       <BooleanInput label={'Aktiv'} source="active" />
@@ -65,16 +65,16 @@ export const VideoCreate = () => (
         <TextInput label={'Başlıq(En)'} required source="title.en" />
         <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
       </GridWrapper>
-      <DateInput source={'customDate'} label={'Tarix'} />
+      <DateInput required source={'customDate'} label={'Tarix'} />
       {/*<FileInput multiple={true} source="videos">*/}
       {/*  <VideoField src={'src'} />*/}
       {/*</FileInput>*/}
-      <ArrayInput label={'Video linkləri(Youtube)'} source={'videos'}>
+      <ArrayInput required label={'Video linkləri(Youtube)'} source={'videos'}>
         <SimpleFormIterator>
-          <TextInput source={'src'} label={'Link'} />
-          <TextInput source={'title.az'} label={'Video Başlıq(Az)'} />
-          <TextInput source={'title.en'} label={'Video Başlıq(En)'} />
-          <TextInput source={'title.ru'} label={'Video Başlıq(Ru)'} />
+          <TextInput required source={'src'} label={'Link'} />
+          <TextInput required source={'title.az'} label={'Video Başlıq(Az)'} />
+          <TextInput required source={'title.en'} label={'Video Başlıq(En)'} />
+          <TextInput required source={'title.ru'} label={'Video Başlıq(Ru)'} />
         </SimpleFormIterator>
       </ArrayInput>
       <BooleanInput label={'Aktiv'} source="active" />

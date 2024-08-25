@@ -4,11 +4,12 @@ import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { DeleteObjectsCommand, S3Client } from '@aws-sdk/client-s3';
 import dbConnect from '@/lib/db';
-import { IFormDetails, IGallery, IVideo } from '@/types';
+import { IFormDetails, IGallery, INews, IVideo } from '@/types';
 import Form from '@/models/form';
 import News from '@/models/news';
 import Video from '@/models/video';
 import Gallery from '@/models/gallery';
+import { Locale } from '@/i18config';
 
 export async function deleteFromR2(fileNames: string | string[]) {
   const _cookies = cookies();
@@ -55,48 +56,154 @@ export async function saveFormData(formData: FormData): Promise<{ success: 'erro
   }
 }
 
-export async function newsSearchAction(query: string) {
+export async function dataSearchAction(
+  query: string,
+  locale: Locale
+): Promise<{ news: INews[]; video: IVideo[]; gallery: IGallery[] }> {
   const _cookies = cookies();
   try {
     await dbConnect();
-    const regexQuery = new RegExp(query, 'i');
-    const newsResults = await News.find({
-      $or: [
-        { 'title.az': { $regex: regexQuery } },
-        { 'title.en': { $regex: regexQuery } },
-        { 'title.ru': { $regex: regexQuery } },
-      ],
-    })
-      .sort({ createdAt: -1 })
-      .select('-content -images');
-    // console.log(newsResults);
-    return JSON.parse(JSON.stringify(newsResults));
+    const path = locale === 'az' ? 'title.az' : locale === 'en' ? 'title.en' : 'title.ru';
+    // Run the queries in parallel using Promise.all
+    const [newsResults, videoResults, galleryResults] = await Promise.all([
+      News.aggregate([
+        {
+          $search: {
+            index: 'search',
+            autocomplete: {
+              query: query,
+              path: path,
+              tokenOrder: 'any',
+            },
+          },
+        },
+        {
+          $match: { active: true },
+        },
+        {
+          $sort: { customDate: -1 },
+        },
+        {
+          $skip: 0,
+        },
+        {
+          $limit: 10,
+        },
+        {
+          $project: {
+            _id: 1,
+            title: 1,
+            createdAt: 1,
+            image: 1,
+            slug: 1,
+            mainImage: 1,
+          },
+        },
+      ]),
+      Video.aggregate([
+        {
+          $search: {
+            index: 'searchvideo',
+            autocomplete: {
+              query: query,
+              path: path,
+              tokenOrder: 'any',
+            },
+          },
+        },
+        {
+          $match: { active: true },
+        },
+        {
+          $sort: { customDate: -1 },
+        },
+        {
+          $skip: 0,
+        },
+        {
+          $limit: 10,
+        },
+      ]),
+      Gallery.aggregate([
+        {
+          $search: {
+            index: 'gallerysearch',
+            autocomplete: {
+              query: query,
+              path: path,
+              tokenOrder: 'any',
+            },
+          },
+        },
+        {
+          $match: { active: true },
+        },
+        {
+          $sort: { customDate: -1 },
+        },
+        {
+          $skip: 0,
+        },
+        {
+          $limit: 10,
+        },
+      ]),
+    ]);
+
+    return {
+      news: JSON.parse(JSON.stringify(newsResults)),
+      video: JSON.parse(JSON.stringify(videoResults)),
+      gallery: JSON.parse(JSON.stringify(galleryResults)),
+    };
   } catch (e) {
-    return [];
+    return { news: [], video: [], gallery: [] };
   }
 }
-export async function gallerySearchAction(title: 'video' | 'photo', query: string) {
+
+export async function gallerySearchAction(title: 'video' | 'photo', query: string, locale: Locale) {
   const _cookies = cookies();
   try {
     await dbConnect();
-    const regexQuery = new RegExp(query, 'i');
     let data: IVideo[] | IGallery[];
     if (title === 'video') {
-      data = await Video.find({
-        $or: [
-          { 'title.az': { $regex: regexQuery } },
-          { 'title.en': { $regex: regexQuery } },
-          { 'title.ru': { $regex: regexQuery } },
-        ],
-      });
+      const path = locale === 'az' ? 'title.az' : locale === 'en' ? 'title.en' : 'title.ru';
+      data = await Video.aggregate([
+        {
+          $search: {
+            index: 'searchvideo',
+            autocomplete: {
+              query: query,
+              path: path,
+              tokenOrder: 'any',
+            },
+          },
+        },
+        {
+          $match: { active: true },
+        },
+        {
+          $sort: { customDate: -1 },
+        },
+      ]);
     } else if (title === 'photo') {
-      data = await Gallery.find({
-        $or: [
-          { 'title.az': { $regex: regexQuery } },
-          { 'title.en': { $regex: regexQuery } },
-          { 'title.ru': { $regex: regexQuery } },
-        ],
-      });
+      data = await Gallery.aggregate([
+        {
+          $search: {
+            index: 'gallerysearch',
+            autocomplete: {
+              query: query,
+              path: path,
+              tokenOrder: 'any',
+            },
+          },
+        },
+        {
+          $match: { active: true },
+        },
+        {
+          $sort: { customDate: -1 },
+        },
+      ]);
     }
     return JSON.parse(JSON.stringify(data));
   } catch (e) {

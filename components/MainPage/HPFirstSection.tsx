@@ -5,6 +5,7 @@ import ButtonArrowRight from '@/components/custom-ui/ButtonArrowRight';
 import JusticeStatue from '@/assets/JusticeStatue.png';
 import HammerIcon from '@/assets/HammerIcon.svg';
 import StarIcon from '@/assets/Star.svg';
+import StarFullIcon from '@/assets/StarFull.svg';
 import { IActiveWorks } from '@/types';
 import dbConnect from '@/lib/db';
 import Activeworks from '@/models/activeworks';
@@ -63,9 +64,9 @@ export default async function HPFirstSection({ locale }: Props) {
                     'inline-block absolute 800:right-0 star-radius top-0 right-[-50px] 1240:w-[100px] 1240:h-[130px] w-[150px] h-[200px] bg-mainGreen'
                   }
                 >
-                  <div className={'relative size-full'}>
-                    <div className={'inline-flex size-3/4 absolute right-0'}>
-                      <img className={' size-full'} src={StarIcon.src} />
+                  <div className={'relative size-full overflow-hidden '}>
+                    <div className={'inline-flex absolute top-[-45%] right-[-50%]'}>
+                      <img className={'STAR size-full'} src={StarFullIcon.src} />
                     </div>
                     <div className={'absolute bottom-3 px-2'}>
                       <h3 className={'800:text-xs text-white text-sm leading-[16.94px] text-left tracking-[-0.025em]'}>

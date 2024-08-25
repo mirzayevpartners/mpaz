@@ -19,7 +19,7 @@ export default function TopNavbarSearch() {
     (search: string) => {
       // console.log('search', search);
       if (search) {
-        router.replace(`/xeberaxtar?nq=${search}`);
+        router.replace(`/axtar?nq=${search}`);
       } else {
         router.replace(`/`);
       }

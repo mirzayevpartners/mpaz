@@ -34,14 +34,12 @@ export default async function Home({ params: { locale } }: { params: { locale: L
       <TopShowLinks links={links} />
       <ContainerWrapper className={'flex gap-y-12 flex-col items-center py-8'}>
         <PageTitleCard title={t('title')} semiTitle={t('subtitle')} description={t('description')} />
-        <div
-          className={'grid 400:w-full gap-x-4 gap-y-6 xl:w-[85%] xl:!grid-cols-4 md:!grid-cols-3 min500:grid-cols-2'}
-        >
+        <div className={'grid gap-x-6 gap-y-6  grid-cols-1 min550:grid-cols-2 min850:grid-cols-3 min1200:grid-cols-4'}>
           {data.map((item) => {
             return (
               <TeamMemberCard
-                cardClassName={'400:max-w-[360px]'}
-                imgClassName={'400:w-full'}
+                cardClassName={''}
+                imgClassName={''}
                 key={item._id}
                 photoUrl={item.photo.src}
                 name={item.fullName[locale]}

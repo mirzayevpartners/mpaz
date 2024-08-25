@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -12,6 +12,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { Locale, locales } from '@/i18config';
 import HamburgerSidebarPopup from '@/components/HamburgerSidebarPopup';
+import SwiperCarousel from '@/components/Swiper';
+import PhotoSwiperModal from '@/components/PhotoSwiperModal';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -37,6 +39,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Toaster richColors />
           <YoutubeVideoPopup />
+          <PhotoSwiperModal />
           <TopNavbar locale={locale} />
           <BottomNavbar locale={locale} />
           <HamburgerSidebarPopup locale={locale} />

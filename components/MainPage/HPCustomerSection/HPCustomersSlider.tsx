@@ -22,6 +22,7 @@ export default async function HPCustomersSlider({ locale }: Props) {
     console.log(e);
     return <div>Server Error</div>;
   }
+  // console.log(testimonials);
   return (
     <Slider wrapperClassName={'ml-[-70px] 800:ml-0 800:mt-[-200px]'}>
       {testimonials.map((item, index) => {

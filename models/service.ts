@@ -12,7 +12,6 @@ const serviceSchema = new mongoose.Schema(
       en: String,
       ru: String,
     },
-    icon: { src: String, title: String, public_id: String },
     active: { type: Boolean, default: true },
   },
   { timestamps: true }

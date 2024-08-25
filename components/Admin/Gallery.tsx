@@ -40,19 +40,9 @@ export const GalleryEdit = () => (
         <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
       </GridWrapper>
       <DateInput source={'customDate'} label={'Tarix'} />
-      {/*<ImageInput multiple={true} source="images" label="Şəkillər">*/}
-      {/*  <ImageField source="src" title="Gallery image" />*/}
-      {/*</ImageInput>*/}
-      <ArrayInput label={'Media'} source={'images'}>
-        <SimpleFormIterator>
-          <ImageInput source="src" label="Şəkil">
-            <ImageField source="src" title="Gallery image" />
-          </ImageInput>
-          <TextInput source="imageTitle.az" label="Başlıq(Az)" />
-          <TextInput source="imageTitle.en" label="Başlıq(En)" />
-          <TextInput source="imageTitle.ru" label="Başlıq(Ru)" />
-        </SimpleFormIterator>
-      </ArrayInput>
+      <ImageInput multiple={true} source="images" label="Şəkillər">
+        <ImageField source="src" title="Gallery image" />
+      </ImageInput>
       <BooleanInput label={'Aktiv'} source="active" />
     </SimpleForm>
   </Edit>
@@ -67,19 +57,9 @@ export const GalleryCreate = () => (
         <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
       </GridWrapper>
       <DateInput source={'customDate'} label={'Tarix'} />
-      {/*<ImageInput multiple={true} source="images" label="Şəkillər">*/}
-      {/*  <ImageField source="src" title="Gallery image" />*/}
-      {/*</ImageInput>*/}
-      <ArrayInput label={'Media'} source={'images'}>
-        <SimpleFormIterator>
-          <ImageInput source="src" label="Şəkil">
-            <ImageField source="src" title="Gallery image" />
-          </ImageInput>
-          <TextInput source="imageTitle.az" label="Başlıq(Az)" />
-          <TextInput source="imageTitle.en" label="Başlıq(En)" />
-          <TextInput source="imageTitle.ru" label="Başlıq(Ru)" />
-        </SimpleFormIterator>
-      </ArrayInput>
+      <ImageInput multiple={true} source="images" label="Şəkillər">
+        <ImageField source="src" title="Gallery image" />
+      </ImageInput>
       <BooleanInput label={'Aktiv'} source="active" />
     </SimpleForm>
   </Create>

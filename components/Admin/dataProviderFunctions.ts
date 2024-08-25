@@ -143,10 +143,10 @@ export async function UploadToCldServiceUpdate(params: UpdateParams) {
 
 export async function UploadToCldGalleryCreate(params: CreateParams) {
   // console.log(params);
-  const arr: Omit<ImageType, '_id'>[] = [];
-  params.data.images.forEach((pI: GalleryImageType) => {
-    if (pI.src.rawFile) {
-      arr.push(pI.src);
+  const arr: Data[] = [];
+  params.data.images.forEach((pI: ImageType) => {
+    if (pI.rawFile) {
+      arr.push(pI);
     }
   });
   if (arr.length === 0) return;
@@ -158,11 +158,11 @@ export async function UploadToCldGalleryCreate(params: CreateParams) {
 export async function UploadToCldGalleryUpdate(params: UpdateParams) {
   const prev_public_id_arr: string[] = [];
   const current_public_id_arr: string[] = [];
-  params.previousData.images.forEach((image: GalleryImageType) => {
-    prev_public_id_arr.push(image.src.public_id);
+  params.previousData.images.forEach((image: ImageType) => {
+    prev_public_id_arr.push(image.public_id);
   });
-  params.data.images.forEach((image: GalleryImageType) => {
-    current_public_id_arr.push(image.src.public_id);
+  params.data.images.forEach((image: ImageType) => {
+    current_public_id_arr.push(image.public_id);
   });
   const shouldDelete = prev_public_id_arr.filter((x) => !current_public_id_arr.includes(x));
   if (shouldDelete.length !== 0) {

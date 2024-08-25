@@ -8,9 +8,7 @@ const gallerySchema = new mongoose.Schema(
       ru: String,
     },
     customDate: String,
-    images: [
-      { src: { src: String, title: String, public_id: String }, imageTitle: { az: String, en: String, ru: String } },
-    ],
+    images: [{ src: String, title: String, public_id: String }],
     active: { type: Boolean, default: true },
   },
   { timestamps: true }

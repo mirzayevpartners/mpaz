@@ -5,49 +5,61 @@ import { LuGalleryVerticalEnd } from 'react-icons/lu';
 import { useState } from 'react';
 import { Slider } from '@/components/custom-ui/Slider';
 import { CarouselItem } from '@/components/ui/carousel';
-import { GalleryImageType, IGallery, IVideo, VideoType } from '@/types';
+import { GalleryImageType, IGallery, ImageType, IVideo, VideoType } from '@/types';
 import { Locale } from '@/i18config';
 import { cn } from '@/lib/utils';
 import VideoCard from '@/components/Media/VideoCard';
 import getVideoId from 'get-video-id';
+import ImageZoom from '@/components/ImageZoom';
+import { usePhotoSlideModalStore } from '@/store/PhotoSlideModalStore';
 
 interface Props {
   video: IVideo[];
   gallery: IGallery[];
   locale: Locale;
 }
+// basis-[85%] min400:basis-[75%] min600:basis-[50%] min800:basis-[40%] min1080:basis-1/3
+
 function HPMediaCarouselItem({
   media,
   index,
   type,
   locale,
   customDate,
+  mediaTitle,
+  activeIdx,
+  imageClick,
 }: {
-  media: VideoType | GalleryImageType;
+  media: VideoType | ImageType;
   index: number;
   type: 'photo' | 'video';
   locale: Locale;
   customDate: string;
+  mediaTitle?: string;
+  activeIdx?: number;
+  imageClick?: (imgSrc: string) => void;
 }) {
   return (
-    <CarouselItem
-      key={media._id}
-      className={'flex basis-[85%] min400:basis-[75%] min600:basis-[50%] min800:basis-[40%] min1080:basis-1/3'}
-    >
+    <CarouselItem key={media._id} className={cn('flex basis-[315px]', activeIdx === 0 && 'basis-[510px]')}>
       <div className={'flex flex-col gap-y-2 max-w-[305px]'}>
-        <div
-          className={cn('w-[305px] h-[275px] 1080:w-[250px] 1080:h-[200px]', index === 0 && 'h-[360px] 1080:h-[300px]')}
-        >
-          {'imageTitle' in media ? (
-            <img className={'size-full'} src={media.src.src} alt={'photo'} />
-          ) : (
-            <VideoCard videoId={media.src && getVideoId(media.src).id} />
-          )}
-        </div>
+        {type === 'photo' && (
+          <div
+            onClick={() => imageClick && imageClick(media.src)}
+            className={cn(
+              'w-[305px] h-[275px] 1080:w-[250px] 1080:h-[200px] cursor-zoom-in',
+              index === 0 && 'h-[360px] 1080:h-[300px]'
+            )}
+          >
+            <img className={'size-full'} src={media.src} alt={'photo'} />
+          </div>
+        )}
+        {type === 'video' && (
+          <div className={cn('w-[500px] h-[280px] 1080:w-[450px] 1080:h-[230px]')}>
+            <VideoCard imageClassname={'rounded-[16px]'} videoId={media.src && getVideoId(media.src).id} />
+          </div>
+        )}
         <div className={'flex flex-col gap-y-1'}>
-          <h4 className={'text-mainGreen font-playfair font-semibold text-base'}>
-            {'imageTitle' in media ? media.imageTitle[locale] : media.title[locale]}
-          </h4>
+          <h4 className={'text-mainGreen font-playfair font-semibold text-base'}>{mediaTitle}</h4>
           <p className={'text-xs leading-[14.52px] text-secondText'}>{customDate}</p>
         </div>
       </div>
@@ -58,8 +70,14 @@ function HPMediaCarouselItem({
 export default function HPMediaSectionGallery({ video, gallery, locale }: Props) {
   const [activeIdx, setActiveIdx] = useState(0);
   const btns = ['Videolar', 'Şəkillər'];
+  const { openModal } = usePhotoSlideModalStore();
+  const images: string[] = [];
+  function imageClick(imgSrc: string) {
+    const idx = images.indexOf(imgSrc);
+    openModal(images, idx);
+  }
   return (
-    <div className={'flex flex-1 max-w-full flex-col gap-y-[58px]'}>
+    <div className={cn('flex flex-1 max-w-full flex-col gap-y-[58px]', activeIdx === 0 && 'flex-[2]')}>
       <div className={'flex gap-x-5'}>
         {btns.map((item, index) => (
           <button
@@ -92,6 +110,8 @@ export default function HPMediaSectionGallery({ video, gallery, locale }: Props)
                     key={index}
                     media={vd}
                     index={index}
+                    mediaTitle={vd.title[locale]}
+                    activeIdx={activeIdx}
                   />
                 );
               })}
@@ -100,18 +120,20 @@ export default function HPMediaSectionGallery({ video, gallery, locale }: Props)
         {activeIdx === 1 && (
           <Slider autoPlay={false} wrapperClassName={'max-w-full'} contentClassName={'size-full'}>
             {gallery &&
-              gallery[0] &&
-              gallery[0].images &&
-              gallery[0].images.length > 0 &&
-              gallery[0].images.map((ph, index) => {
+              gallery.length > 0 &&
+              gallery.map((g, index) => {
+                images.push(g.images[0].src);
                 return (
                   <HPMediaCarouselItem
-                    customDate={gallery[0].customDate}
+                    customDate={g.customDate}
                     locale={locale}
                     type={'photo'}
                     key={index}
-                    media={ph}
+                    media={g.images[0]}
                     index={index}
+                    mediaTitle={g.title[locale]}
+                    activeIdx={activeIdx}
+                    imageClick={imageClick}
                   />
                 );
               })}

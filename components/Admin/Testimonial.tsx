@@ -37,8 +37,8 @@ export const TestimonialEdit = () => (
       </GridWrapper>
       <GridWrapper>
         <TextInput label={'Başlıq(Az)'} required source="title.az" />
-        <TextInput label={'Başlıq(En)'} required source="title.ru" />
-        <TextInput label={'Başlıq(Ru)'} required source="title.en" />
+        <TextInput label={'Başlıq(En)'} required source="title.en" />
+        <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
       </GridWrapper>
       <GridWrapper>
         <TextInput label={'Fikir(Az)'} required source="text.az" />
@@ -64,8 +64,8 @@ export const TestimonialCreate = () => (
       </GridWrapper>
       <GridWrapper>
         <TextInput label={'Başlıq(Az)'} required source="title.az" />
-        <TextInput label={'Başlıq(En)'} required source="title.ru" />
-        <TextInput label={'Başlıq(Ru)'} required source="title.en" />
+        <TextInput label={'Başlıq(En)'} required source="title.en" />
+        <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
       </GridWrapper>
       <GridWrapper>
         <TextInput label={'Fikir(Az)'} required source="text.az" />

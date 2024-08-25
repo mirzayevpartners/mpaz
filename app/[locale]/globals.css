@@ -65,7 +65,7 @@ html {
 }
 
 .STAR {
-  animation: star 3s infinite linear;
+  animation: star 6s infinite linear;
   /*transform-origin: center;*/
 }
 @keyframes star {

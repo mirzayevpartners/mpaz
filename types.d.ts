@@ -38,7 +38,7 @@ export interface IService {
   _id: string;
   title: ILanguage;
   description: ILanguage;
-  icon: ImageType;
+  // icon: ImageType;
   active: boolean;
   createdAt: string;
   updatedAt: string;
@@ -54,7 +54,7 @@ export interface IGallery {
   _id: string;
   title: ILanguage;
   customDate: string;
-  images: GalleryImageType[];
+  images: ImageType[];
   active: boolean;
   createdAt: string;
   updatedAt: string;

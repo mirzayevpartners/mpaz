@@ -1,4 +1,6 @@
 'use client';
+import { usePhotoSlideModalStore } from '@/store/PhotoSlideModalStore';
+
 export const dynamic = 'force-dynamic';
 import { Locale } from '@/i18config';
 import { useTranslations } from 'next-intl';
@@ -22,11 +24,13 @@ interface Props {
 }
 
 export default function Home({ params, searchParams }: Props) {
+  const { openModal } = usePhotoSlideModalStore();
   const t = useTranslations('MediaPage');
   const t1 = useTranslations('Common');
   const [data, setData] = useState<IVideo[] | IGallery[]>([]);
   const router = useRouter();
   const pathname = usePathname();
+  const images: string[] = [];
   const setActiveChoice = useCallback(
     (index: number) => {
       const spParams = new URLSearchParams();
@@ -36,14 +40,16 @@ export default function Home({ params, searchParams }: Props) {
     },
     [searchParams, router, pathname]
   );
-
+  function imageClick(imgSrc: string) {
+    const idx = images.indexOf(imgSrc);
+    openModal(images, idx);
+  }
   useEffect(() => {
     const query = searchParams['mq'] as string;
     const title = searchParams['title'] as 'video' | 'photo';
-
     async function fetchData() {
       if (query) {
-        const data = await gallerySearchAction(title, query);
+        const data = await gallerySearchAction(title, query, params.locale);
         setData(data);
       }
     }
@@ -62,7 +68,7 @@ export default function Home({ params, searchParams }: Props) {
   ];
   const activeChoice = (searchParams['title'] as 'video' | 'photo') === 'video' ? 0 : 1;
   return (
-    <div className={'h-[100vh]'}>
+    <div className={''}>
       <TopShowLinks links={links} />
       <ContainerWrapper className={'py-4 flex flex-col gap-y-8'}>
         <MediaChoiceBox activeChoice={activeChoice} setActiveChoice={setActiveChoice} t={t} t1={t1} />
@@ -88,7 +94,15 @@ export default function Home({ params, searchParams }: Props) {
                       })}
                     {'images' in item &&
                       item.images.map((ph) => {
-                        return <MediaDataCarouselItem type={'gallery'} gallerySrc={ph.src.src} key={ph._id} />;
+                        images.push(ph.src);
+                        return (
+                          <MediaDataCarouselItem
+                            type={'gallery'}
+                            imageClick={imageClick}
+                            gallerySrc={ph.src}
+                            key={ph._id}
+                          />
+                        );
                       })}
                   </Slider>
                 </div>

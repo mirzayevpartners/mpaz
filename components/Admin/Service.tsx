@@ -40,9 +40,9 @@ export const ServiceEdit = () => (
         <TextInput label={'Açıqlama(En)'} required source="description.en" />
         <TextInput label={'Açıqlama(Ru)'} required source="description.ru" />
       </GridWrapper>
-      <ImageInput source="icon" label="Ikon">
-        <ImageField source="src" title="icon" />
-      </ImageInput>
+      {/*<ImageInput source="icon" label="Ikon">*/}
+      {/*  <ImageField source="src" title="icon" />*/}
+      {/*</ImageInput>*/}
       <BooleanInput label={'Aktiv'} source="active" />
     </SimpleForm>
   </Edit>
@@ -61,9 +61,9 @@ export const ServiceCreate = () => (
         <TextInput label={'Açıqlama(En)'} required source="description.en" />
         <TextInput label={'Açıqlama(Ru)'} required source="description.ru" />
       </GridWrapper>
-      <ImageInput source="icon" label="Ikon">
-        <ImageField source="src" title="icon" />
-      </ImageInput>
+      {/*<ImageInput source="icon" label="Ikon">*/}
+      {/*  <ImageField source="src" title="icon" />*/}
+      {/*</ImageInput>*/}
       <BooleanInput label={'Aktiv'} source="active" />
     </SimpleForm>
   </Create>

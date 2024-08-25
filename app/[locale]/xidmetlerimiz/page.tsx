@@ -40,7 +40,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
               <ServiceCard
                 key={index}
                 index={index}
-                iconUrl={item.icon.src}
+                // iconUrl={item.icon.src}
                 title={item.title[locale]}
                 text={item.description[locale]}
               />

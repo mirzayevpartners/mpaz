@@ -28,9 +28,12 @@ async function TeamPartners({ locale }: Props) {
     return <div>Server Error</div>;
   }
   return (
-    <Slider wrapperClassName={'min1080:max-w-[45%] md:max-w-[65%] 800:max-w-full'}>
+    <Slider wrapperClassName={'max-w-full md:max-w-[75%] min1080:max-w-[55%] min1250:max-w-[45%] min1500:max-w-[40%]'}>
       {team.map((item) => (
-        <CarouselItem key={item._id} className={'flex basis-1/2 items-center justify-center 500:basis-2/3'}>
+        <CarouselItem
+          key={item._id}
+          className={'flex items-center justify-center min300:basis-full min500:basis-[60%] min650:basis-[50%]'}
+        >
           <TeamMemberCard
             photoUrl={item.photo.src}
             name={item.fullName[locale]}

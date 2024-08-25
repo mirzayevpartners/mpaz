@@ -3,6 +3,8 @@ import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger } from '@/components/ui/select';
 import UKFlagSvg from '@/assets/UKFlagSvg.svg';
+import AZFlagSvg from '@/assets/AZFlag.svg';
+import RUFlagSvg from '@/assets/RUFlag.svg';
 import { Locale } from '@/i18config';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
@@ -15,7 +17,7 @@ export function LangSwitcher({ locale }: Props) {
   const slugWithoutLocale = pathname.replace(`/${locale}`, '');
   const langs = [
     {
-      flag: UKFlagSvg.src,
+      flag: AZFlagSvg.src,
       locale: 'az',
     },
     {
@@ -23,7 +25,7 @@ export function LangSwitcher({ locale }: Props) {
       locale: 'en',
     },
     {
-      flag: UKFlagSvg.src,
+      flag: RUFlagSvg.src,
       locale: 'ru',
     },
   ];
@@ -37,7 +39,7 @@ export function LangSwitcher({ locale }: Props) {
           if (lang.locale === locale) {
             return (
               <div key={lang.locale} className={'flex items-center gap-x-[0.563rem]'}>
-                <img src={lang.flag} alt={'UK Flag'} />
+                <img className={'w-5'} src={lang.flag} alt={'Flag'} />
                 <p className={'text-sm font-medium leading-[1.059rem] text-white'}>{locale.toUpperCase()}</p>
               </div>
             );
@@ -51,7 +53,7 @@ export function LangSwitcher({ locale }: Props) {
               return (
                 <SelectItem key={lang.locale} value={lang.locale}>
                   <div className={'flex items-center gap-x-[0.563rem]'}>
-                    <img src={lang.flag} alt={'UK Flag'} />
+                    <img className={'w-5'} src={lang.flag} alt={'Flag'} />
                     <p className={'text-sm font-medium leading-[1.059rem] text-black'}>{lang.locale.toUpperCase()}</p>
                   </div>
                 </SelectItem>

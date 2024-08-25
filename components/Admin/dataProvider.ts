@@ -115,12 +115,7 @@ export const dataProvider = {
       await UploadToCldNewsUpdate(params);
     } else if (resource === 'Team' || resource === 'Testimonial') {
       await UploadToCldTeamUpdate(params);
-    } else if (
-      resource === 'Service' ||
-      resource === 'ActiveWorks' ||
-      resource === 'CompanyCounts' ||
-      resource === 'Contact'
-    ) {
+    } else if (resource === 'ActiveWorks' || resource === 'CompanyCounts' || resource === 'Contact') {
       await UploadToCldServiceUpdate(params);
     } else if (resource === 'Gallery') {
       await UploadToCldGalleryUpdate(params);
@@ -142,12 +137,7 @@ export const dataProvider = {
       await UploadToCldNewsCreate(params);
     } else if (resource === 'Team' || resource === 'Testimonial') {
       await UploadToCldTeamCreate(params);
-    } else if (
-      resource === 'Service' ||
-      resource === 'ActiveWorks' ||
-      resource === 'CompanyCounts' ||
-      resource === 'Contact'
-    ) {
+    } else if (resource === 'ActiveWorks' || resource === 'CompanyCounts' || resource === 'Contact') {
       await UploadToCldServiceCreate(params);
     } else if (resource === 'Gallery') {
       await UploadToCldGalleryCreate(params);
