@@ -32,7 +32,7 @@ export default function Home({ params, searchParams }: Props) {
     video: [],
     gallery: [],
   });
-  console.log(data.news);
+  // console.log(data.news);
   const { openModal } = usePhotoSlideModalStore();
   const images: string[] = [];
   function imageClick(imgSrc: string) {

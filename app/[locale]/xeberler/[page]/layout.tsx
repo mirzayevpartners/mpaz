@@ -3,6 +3,7 @@ import { Locale } from '@/i18config';
 import { NewsPagination } from '@/components/xeberler/NewsPagination';
 import React from 'react';
 import dbConnect from '@/lib/db';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export async function generateStaticParams() {
   await dbConnect();
@@ -23,7 +24,8 @@ export default async function NewsPageLayout({
   await dbConnect();
   const count = await News.countDocuments({ active: true });
   const currPage = parseInt(params.page);
-  console.log(currPage, count);
+  unstable_setRequestLocale(params.locale);
+  // console.log(currPage, count);
   return (
     <>
       {children}

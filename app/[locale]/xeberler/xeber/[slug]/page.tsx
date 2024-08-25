@@ -6,7 +6,7 @@ import { INews } from '@/types';
 import dbConnect from '@/lib/db';
 import News from '@/models/news';
 import { Locale } from '@/i18config';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
 interface IPage {
   params: {
@@ -16,6 +16,7 @@ interface IPage {
 }
 
 export default async function Home({ params: { locale, slug } }: IPage) {
+  unstable_setRequestLocale(locale);
   const t1 = await getTranslations('Common');
   let news: INews | null = null;
   try {

@@ -2,6 +2,8 @@ import React from 'react';
 import dbConnect from '@/lib/db';
 import News from '@/models/news';
 import { INews } from '@/types';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { Locale } from '@/i18config';
 
 export async function generateStaticParams() {
   await dbConnect();
@@ -11,6 +13,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function SingleNewsLayout({ children }: { children: React.ReactNode }) {
+export default function SingleNewsLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: Locale };
+}) {
+  unstable_setRequestLocale(params.locale);
   return <>{children}</>;
 }

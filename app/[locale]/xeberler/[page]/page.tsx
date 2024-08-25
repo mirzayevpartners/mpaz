@@ -7,14 +7,6 @@ import { Locale } from '@/i18config';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import SingleNewsCard from '@/components/SingleNewsCard';
 
-// export async function generateStaticParams() {
-//   await dbConnect();
-//   news = await News.find({ active: true })
-//     .skip(currPage - 1)
-//     .limit(1)
-//     .select('slug');
-// }
-
 export default async function Home({ params: { page, locale } }: { params: { page: string; locale: Locale } }) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations('Homepage_NewsSection');
