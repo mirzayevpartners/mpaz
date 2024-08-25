@@ -1,8 +1,6 @@
 'use client';
 import { Slider } from '@/components/custom-ui/Slider';
 
-export const dynamic = 'force-dynamic';
-
 import { dataSearchAction } from '@/app/action';
 import { useEffect, useState } from 'react';
 import { IGallery, INews, IVideo } from '@/types';

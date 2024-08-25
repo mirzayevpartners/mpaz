@@ -5,7 +5,8 @@ import { saveFormData } from '@/app/action';
 import { toast } from 'sonner';
 import { Locale } from '@/i18config';
 import { useTranslations } from 'next-intl';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import SimpleLoader from '@/components/SimpleLoader';
 
 interface Props {
   locale: Locale;
@@ -15,9 +16,10 @@ function ApplyFormRight({ locale }: Props) {
   const t = useTranslations('Homepage_FormSection');
   const formRef = useRef<HTMLFormElement>(null);
   const inputClassname = 'border border-inputBorder py-3 px-4 bg-white';
-
+  const [disabled, setDisabled] = useState(false);
   async function handleSubmit(e: any) {
     e.preventDefault();
+    setDisabled(true);
     try {
       const formData = new FormData(e.target);
       const response = await saveFormData(formData);
@@ -29,6 +31,7 @@ function ApplyFormRight({ locale }: Props) {
     } catch (e) {
       toast.error(t('errorMessage'));
     }
+    setDisabled(false);
     formRef.current?.reset();
   }
 
@@ -83,8 +86,14 @@ function ApplyFormRight({ locale }: Props) {
               </label>
             </div>
           </div>
-          <button type={'submit'} className={'bg-mainGreen p-4 text-center text-base leading-[1.21rem] text-white'}>
-            {t('send')}
+          <button
+            disabled={disabled}
+            type={'submit'}
+            className={
+              'bg-mainGreen p-4 flex justify-center items-center text-center text-base leading-[1.21rem] text-white'
+            }
+          >
+            {disabled ? <SimpleLoader /> : t('send')}
           </button>
         </div>
       </form>

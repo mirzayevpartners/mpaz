@@ -1,7 +1,6 @@
 'use client';
 import { usePhotoSlideModalStore } from '@/store/PhotoSlideModalStore';
 
-export const dynamic = 'force-dynamic';
 import { Locale } from '@/i18config';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState, useCallback } from 'react';
