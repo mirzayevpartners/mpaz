@@ -46,7 +46,7 @@ async function HPNewsSectionDemoNews({ locale }: Props) {
       )}
       <Slider
         autoPlay={false}
-        wrapperClassName={'max-w-[50%] 1080:max-w-[75%] 700:!max-w-full'}
+        wrapperClassName={'max-w-fit'}
         contentClassName={'grid grid-cols-2 gap-x-6 gap-y-4 1080:flex'}
       >
         {/*<div className={'grid grid-cols-2 gap-x-6 gap-y-4 900:grid-cols-4'}>*/}

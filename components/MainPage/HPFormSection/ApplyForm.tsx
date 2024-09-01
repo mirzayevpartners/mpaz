@@ -106,7 +106,7 @@ export default function ApplyForm({ locale }: Props) {
   return (
     <div className={'flex border-t-[6px] border-t-secondGold 900:flex-col'}>
       <div className={'relative 1080:flex-1'}>
-        <img className={'h-full w-full'} src={ApplyFormBG.src} />
+        <img className={'h-full w-full object-cover'} src={ApplyFormBG.src} />
         <div className={'absolute inset-0 mx-auto flex h-full w-[90%] flex-col items-center justify-end pb-3'}>
           <h6 className={'text-base leading-[1.21rem] text-secondGold'}>BİZƏ</h6>
           <div className={'flex flex-col items-center gap-y-3'}>

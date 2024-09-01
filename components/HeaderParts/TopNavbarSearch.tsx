@@ -6,11 +6,15 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter, usePathname } from '@/navigation';
 import { useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+import { cn } from '@/lib/utils';
+import useOutsideClick from '@/hooks/useOutsideClick';
 export default function TopNavbarSearch() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [inputValue, setInputValue] = useState('');
+  const [openInput, setOpenInput] = useState(false);
+  const inputRef = useRef(null);
   useEffect(() => {
     // console.log('searchParams', searchParams.get('nq'));
     setInputValue((searchParams.get('nq') as string) || '');
@@ -31,13 +35,21 @@ export default function TopNavbarSearch() {
     setInputValue(value);
     debouncedSearch(value);
   };
+  useOutsideClick(inputRef, () => {
+    setOpenInput(false);
+  });
   return (
-    <div className={'bg-bgGray relative max-w-[250px]'}>
-      <FaMagnifyingGlass className={'absolute right-3 top-1 text-secondText'} size={20} />
+    <div className={cn('bg-bgGray relative max-w-[250px] duration-300', !openInput && 'bg-transparent')}>
+      <FaMagnifyingGlass
+        onClick={() => setOpenInput((prevState) => !prevState)}
+        className={cn('absolute right-3 top-1 text-secondText duration-300 cursor-pointer', !openInput && 'text-white')}
+        size={20}
+      />
       <InputComponent
+        ref={inputRef}
         value={inputValue}
         onChange={(e) => handleInputChange(e.target.value)}
-        className={'!px-2 !py-1'}
+        className={cn('!px-2 !py-1 !bg-transparent duration-300 w-full', !openInput && 'w-0')}
       />
     </div>
   );

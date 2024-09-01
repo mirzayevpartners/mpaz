@@ -14,7 +14,7 @@ function NewsImgSlider({ imgs }: INewsImgSliderProps) {
       {imgs.map((item, index) => {
         return (
           <CarouselItem key={item._id} className={'max-h-[490px]'}>
-            <img className={'block w-full h-full m-auto'} src={item.src} />
+            <img className={'block w-full h-full m-auto object-cover'} src={item.src} />
           </CarouselItem>
         );
       })}

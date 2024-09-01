@@ -23,10 +23,10 @@ export default function BigNewsDemo({ slug, mainImage, title, createdAt }: BigNe
       <Link className={'h-fit max-w-[75%] 700:max-w-full'} href={`/xeberler/xeber/${slug}`}>
         <div className={'group/big size-full flex cursor-pointer flex-col gap-y-4 '}>
           <div
-            className={'flex w-[526px] h-[362px] 800:h-[250px] max-w-full items-center justify-center overflow-hidden'}
+            className={'flex w-full h-[365px] 800:h-[250px] max-w-full items-center justify-center overflow-hidden'}
           >
             <img
-              className={'size-full transition duration-300 ease-in-out group-hover/big:scale-110'}
+              className={'size-full object-cover transition duration-300 ease-in-out group-hover/big:scale-110'}
               src={mainImage}
               alt="Big News"
             />

@@ -4,15 +4,19 @@ import { useHamburgerSidebarStore } from '@/store/HamburgerSidebarStore';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import ContainerWrapper from '@/components/ContainerWrapper';
-import { ReactElement, useLayoutEffect } from 'react';
+import { ReactElement, useEffect, useLayoutEffect } from 'react';
 import { Search } from 'lucide-react';
 import ButtonArrowRight from '@/components/custom-ui/ButtonArrowRight';
-import Link from 'next/link';
 import { Locale } from '@/i18config';
 import { ISocials } from '@/types';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYoutube } from 'react-icons/fa';
-
+import { Link as NewLink } from '@/navigation';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 function ChangeLanguage({ locale }: { locale: Locale }) {
+  const { close } = useHamburgerSidebarStore();
+  const pathname = usePathname();
+  const slugWithoutLocale = pathname.replace(`/${locale}`, '');
   const langs = [
     {
       title: 'Azərbaycan dili',
@@ -41,7 +45,8 @@ function ChangeLanguage({ locale }: { locale: Locale }) {
               'text-base leading-[18.75px] text-secondText',
               locale === lang.locale && 'text-mainGreen font-semibold'
             )}
-            href={lang.locale}
+            href={`/${lang.locale}${slugWithoutLocale}`}
+            onClick={close}
           >
             {lang.title}
           </Link>
@@ -52,6 +57,7 @@ function ChangeLanguage({ locale }: { locale: Locale }) {
 }
 
 function BottomNavbarLinksNav({ locale }: { locale: Locale }) {
+  const { close } = useHamburgerSidebarStore();
   const links = [
     { href: '/', text: 'Ana Səhifə' },
     { href: '/#ServicesSection', text: 'Xidmətlərimiz' },
@@ -67,15 +73,16 @@ function BottomNavbarLinksNav({ locale }: { locale: Locale }) {
       {links.map((link, index) => {
         return (
           // <div className={''} key={index}>
-          <Link
+          <NewLink
             key={index}
             className={
               'w-full text-center border-b-2 border-transparent px-4 py-[15px] text-base leading-[19.36px] text-black hover:border-b-secondGold'
             }
             href={link.href}
+            onClick={close}
           >
             {link.text}
-          </Link>
+          </NewLink>
           // </div>
         );
       })}

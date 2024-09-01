@@ -14,6 +14,8 @@ import { Locale, locales } from '@/i18config';
 import HamburgerSidebarPopup from '@/components/HamburgerSidebarPopup';
 import SwiperCarousel from '@/components/Swiper';
 import PhotoSwiperModal from '@/components/PhotoSwiperModal';
+import ChatBot from '@/components/ChatBot';
+import PageWhatsappBox from '@/components/PageWhatsappBox';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -37,6 +39,8 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
+          <PageWhatsappBox />
+          <ChatBot />
           <Toaster richColors />
           <YoutubeVideoPopup />
           <PhotoSwiperModal />

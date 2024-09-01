@@ -24,11 +24,14 @@ export default function SingleNewsCard({ divClassName, imgClassName, news, local
 
   if (isClient) {
     return (
-      <Link href={`/xeberler/xeber/${slug}`}>
+      <Link className={'max-w-[416px]'} href={`/xeberler/xeber/${slug}`}>
         <div className={cn('flex cursor-pointer group flex-col gap-y-6', divClassName)}>
-          <div className="overflow-hidden max-h-[235px]">
+          <div className="overflow-hidden h-[235px]">
             <img
-              className={cn('size-full transition duration-300 ease-in-out group-hover:scale-110', imgClassName)}
+              className={cn(
+                'size-full object-cover transition duration-300 ease-in-out group-hover:scale-110',
+                imgClassName
+              )}
               src={news.mainImage.src}
               alt="Small News"
             />

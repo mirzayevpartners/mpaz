@@ -20,8 +20,8 @@ export default function TeamMemberCard({
 }: ITeamMemberCard) {
   return (
     <div className={cn('flex max-w-[253px] flex-col duration-300 hover:shadow-lg', cardClassName)}>
-      <div className={cn('flex w-[253px] h-[305px] items-center justify-center',imgClassName)}>
-        <img className={cn('size-full')} src={photoUrl} alt={name} />
+      <div className={cn('flex w-[253px] h-[305px] items-center justify-center', imgClassName)}>
+        <img className={cn('size-full object-cover')} src={photoUrl} alt={name} />
       </div>
       <div className={'flex w-full flex-col gap-y-1 bg-white p-4 '}>
         <p className={'text-xs uppercase font-semibold leading-[14.52px] text-secondGold'}>{position}</p>

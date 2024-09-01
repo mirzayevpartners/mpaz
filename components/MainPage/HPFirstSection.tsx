@@ -69,7 +69,7 @@ export default async function HPFirstSection({ locale }: Props) {
                       <img className={'STAR size-full'} src={StarFullIcon.src} />
                     </div>
                     <div className={'absolute bottom-3 px-2'}>
-                      <h3 className={'800:text-xs text-white text-sm leading-[16.94px] text-left tracking-[-0.025em]'}>
+                      <h3 className={'text-white text-[10px] leading-[10px] min1240:text-sm min1240:leading-[16.94px] text-left tracking-[-0.025em]'}>
                         {t('star')}
                       </h3>
                     </div>

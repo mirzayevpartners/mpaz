@@ -31,12 +31,14 @@ export default async function Home({ params: { page, locale } }: { params: { pag
           { text: t1('news'), href: '/xeberler' },
         ]}
       />
-      <ContainerWrapper className={'grid md:!grid-cols-3 min500:grid-cols-2 gap-x-6 gap-y-10 py-8'}>
-        {news &&
-          news.length &&
-          news.map((item) => {
-            return <SingleNewsCard locale={locale} key={item._id} news={item} />;
-          })}
+      <ContainerWrapper className={'700:grid 700:place-content-center'}>
+        <div className={'size-full grid grid-cols-1 min700:grid-cols-2 min1000:grid-cols-3 gap-x-6 gap-y-10 py-8'}>
+          {news &&
+            news.length &&
+            news.map((item) => {
+              return <SingleNewsCard locale={locale} key={item._id} news={item} />;
+            })}
+        </div>
       </ContainerWrapper>
     </div>
   );

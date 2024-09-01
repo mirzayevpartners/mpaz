@@ -26,9 +26,9 @@ export default async function HPFaqSection({ locale }: Props) {
     <section id={'FaqSection'} className={' bg-mainGreen py-12'} style={{ backgroundImage: `url(${HPFaqBG.src})` }}>
       <ContainerWrapper className={'h-full flex flex-col items-center justify-center gap-y-8'}>
         <div className={'flex flex-col items-center gap-y-1'}>
-          <h4 className={'text-paleGold2 text-[20px] leading-[24.2px]'}>{t("title")}</h4>
-          <h2 className={'font-playfair text-white font-semibold text-[32px] leading-[42.66px]'}>
-            {t("subtitle")}
+          <h4 className={'text-paleGold2 text-[20px] leading-[24.2px]'}>{t('title')}</h4>
+          <h2 className={'font-playfair text-center text-white font-semibold text-[32px] leading-[42.66px]'}>
+            {t('subtitle')}
           </h2>
         </div>
         <div className={'xl:w-1/2 lg:w-2/3 md:w-[80%] sm:w-full'}>

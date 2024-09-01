@@ -20,12 +20,12 @@ export default function SmallNewsDemo({ slug, mainImage, title, createdAt }: Sma
   }, []);
   if (isClient) {
     return (
-      <CarouselItem className={'group/small cursor-pointer 700:!basis-2/3 1080:basis-1/2'}>
+      <CarouselItem className={'group/small cursor-pointer basis-[260px] w-full max-w-[260px]'}>
         <Link className={'size-full'} href={`/xeberler/xeber/${slug}`}>
           <div className={'flex flex-col gap-y-2'}>
-            <div className={'overflow-hidden'}>
+            <div className={'overflow-hidden h-[143px] w-full'}>
               <img
-                className={'size-full transition duration-300 ease-in-out group-hover/small:scale-110'}
+                className={'size-full object-cover transition duration-300 ease-in-out group-hover/small:scale-110'}
                 src={mainImage}
                 alt="Small News"
               />

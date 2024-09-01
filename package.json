@@ -19,6 +19,7 @@
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@tawk.to/tawk-messenger-react": "^2.0.2",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.2.0",

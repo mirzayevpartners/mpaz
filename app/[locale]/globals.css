@@ -79,3 +79,7 @@ html {
         transform: rotate(360deg);
     }
 }
+
+.pos-unset {
+    position: unset;
+}
