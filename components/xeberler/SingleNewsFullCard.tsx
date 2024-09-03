@@ -1,19 +1,10 @@
 import NewsImgSlider from '@/components/xeberler/NewsImgSlider';
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
-import Link from 'next/link';
 import { INews } from '@/types';
 import { dateConverterWithTime } from '@/lib/dateConverter';
 import DynamicText from '@/components/DynamicText';
 import { Locale } from '@/i18config';
-
+import ShareNewsPlugin from '@/components/xeberler/ShareNewsPlugin';
 export default function SingleNewsFullCard({ news, locale }: { news: INews; locale: Locale }) {
-  const socialIcons = [
-    { href: '/', icon: <FaFacebookF className={'text-white'} size={15} /> },
-    { href: '/', icon: <FaTwitter className={'text-white'} size={15} /> },
-    { href: '/', icon: <FaInstagram className={'text-white'} size={15} /> },
-    { href: '/', icon: <FaYoutube className={'text-white'} size={15} /> },
-    { href: '/', icon: <FaLinkedinIn className={'text-white'} size={15} /> },
-  ];
   return (
     <div className={'flex flex-[2] flex-col gap-y-[44px]'}>
       <div className={'flex flex-col gap-y-[44px]'}>
@@ -43,19 +34,7 @@ export default function SingleNewsFullCard({ news, locale }: { news: INews; loca
       <div className={'h-16 border-t border-t-myGray flex items-center justify-center pt-5 sm:pt-0 sm:justify-start'}>
         <div className={'flex items-center gap-x-8 flex-col gap-y-4 sm:flex-row'}>
           <p className={'font-roboto text-sm leading-[21.63px] text-newsText'}>Sosial şəbəkələrdə paylaş</p>
-          <div className={'flex items-center gap-x-[15px]'}>
-            {socialIcons.map((item, index) => {
-              return (
-                <Link
-                  className={'bg-newsText rounded-full size-6 flex items-center justify-center'}
-                  href={item.href}
-                  key={index}
-                >
-                  {item.icon}
-                </Link>
-              );
-            })}
-          </div>
+          <ShareNewsPlugin media={news.mainImage.src} title={news.title[locale]}/>
         </div>
       </div>
     </div>

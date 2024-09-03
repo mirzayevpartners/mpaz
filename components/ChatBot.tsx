@@ -20,8 +20,8 @@ export default function ChatBot() {
     <TawkMessengerReact
       customStyle={{ zIndex: 100 }}
       // ref={tawkMessengerRef}
-      propertyId="66d1ecd150c10f7a00a21da8"
-      widgetId="1i6i0a50p"
+      propertyId="66d45475ea492f34bc0c67b0"
+      widgetId="1i6mmjqqp"
     />
   );
 }

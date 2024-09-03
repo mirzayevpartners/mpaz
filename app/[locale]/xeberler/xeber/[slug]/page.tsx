@@ -47,7 +47,7 @@ export default async function Home({ params: { locale, slug } }: IPage) {
       <TopShowLinks links={links} />
       <ContainerWrapper className={'flex flex-col xl:flex-row gap-x-10 gap-y-10 py-8'}>
         <SingleNewsFullCard locale={locale} news={news} />
-        <NewsDetailsRightPart />
+        <NewsDetailsRightPart slug={slug} locale={locale} />
       </ContainerWrapper>
     </div>
   );

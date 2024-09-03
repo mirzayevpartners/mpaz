@@ -47,7 +47,7 @@ export default function SwiperCarousel({ photos, currentPhotoIndex }: SwiperCaro
       {photos.map((ph, key) => {
         return (
           <SwiperSlide key={key} className={'size-full !flex justify-center items-center'}>
-            <img ref={imgRef} className={'min800:w-[700px] min800:h-[500px] max-w-full'} src={ph} alt="" />
+            <img ref={imgRef} className={'min800:w-[800px] min800:h-[550px] max-w-full object-cover'} src={ph} alt="" />
           </SwiperSlide>
         );
       })}

@@ -42,7 +42,7 @@ export default async function HPFirstSection({ locale }: Props) {
             <div className={'flex flex-col gap-y-6 800:gap-y-3 flex-[1.8]'}>
               <h1
                 className={
-                  'font-playfair text-[2.25rem] font-bold leading-[2.78rem] tracking-[-0.4px] text-mainGreen lg:text-[3.5rem] lg:leading-[4.943rem] xl:text-[4rem]'
+                  'max-w-[15ch] font-playfair text-[2.25rem] font-bold leading-[2.78rem] tracking-[-0.4px] text-mainGreen lg:text-[3.5rem] lg:leading-[4.943rem] xl:text-[4rem]'
                 }
               >
                 {t('title')}

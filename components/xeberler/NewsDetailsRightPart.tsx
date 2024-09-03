@@ -4,33 +4,30 @@ import SmallShownNewsIMG from '@/assets/SmallShownNewsPNG.png';
 import { IoStar } from 'react-icons/io5';
 import { Suspense } from 'react';
 import NewsSearchInput from '@/components/xeberler/NewsSearchInput';
-function SmallShownNewsCard() {
-  return (
-    <div className={'flex gap-x-4'}>
-      {/*<div className={'size-36'}>*/}
-      <img className={'size-36'} src={SmallShownNewsIMG.src} alt={'Small Shown News'} />
-      {/*</div>*/}
-      <div className={'flex flex-col gap-y-2'}>
-        <div className={'flex flex-col gap-y-1'}>
-          <div
-            className={
-              'bg-secondGold flex p-2 gap-x-1 items-center justify-center h-[17px] w-fit text-white text-xs leading-[14.52px]'
-            }
-          >
-            <IoStar size={13} />
-            <span>Fotolar</span>
-          </div>
-          <h5 className={'font-playfair font-semibold text-mainGreen text-[20px] leading-[30px]'}>
-            "Mirzəyev və Partnyorları" Vəkil Bürosunda Müstəqilliyin Bərpas...
-          </h5>
-        </div>
-        <p className={'text-secondText text-sm leading-[16.94px]'}>19.03.2023</p>
-      </div>
-    </div>
-  );
-}
+import { INews } from '@/types';
+import News from '@/models/news';
+import dbConnect from '@/lib/db';
+import { dateConverter } from '@/lib/dateConverter';
+import { Locale } from '@/i18config';
+import image from 'react-multi-carousel/dev/components/image';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import SmallShownNewsCard from '@/components/xeberler/SmallShownNewsCard';
 
-export default function NewsDetailsRightPart() {
+
+export default async function NewsDetailsRightPart({ slug, locale }: { slug: string; locale: Locale }) {
+  unstable_setRequestLocale(locale);
+  let news: INews[] | null = null;
+  try {
+    await dbConnect();
+    news = await News.find({ active: true, slug: { $ne: slug } })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .select('slug mainImage title createdAt');
+  } catch (e) {
+    console.log(e);
+    return <div>Server error</div>;
+  }
+  // console.log(news);
   return (
     <div className={'flex flex-1 flex-col'}>
       <div className={'flex flex-col gap-y-[50px]'}>
@@ -45,8 +42,16 @@ export default function NewsDetailsRightPart() {
       <div className={'flex flex-col gap-y-6'}>
         <h4 className={'font-playfair text-mainGreen font-semibold text-xl'}>Digər bənzər məqalələr</h4>
         <div className={'flex flex-col gap-y-[32px]'}>
-          {[1, 2, 3, 4].map((item, index) => {
-            return <SmallShownNewsCard key={index} />;
+          {news.map((item) => {
+            return (
+              <SmallShownNewsCard
+                title={item.title[locale]}
+                img={item.mainImage.src}
+                slug={item.slug}
+                date={item.createdAt}
+                key={item._id}
+              />
+            );
           })}
         </div>
       </div>

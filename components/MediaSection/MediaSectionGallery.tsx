@@ -50,7 +50,7 @@ function HPMediaCarouselItem({
               index === 0 && 'h-[360px] 1080:h-[300px]'
             )}
           >
-            <img className={'size-full'} src={media.src} alt={'photo'} />
+            <img className={'size-full object-cover'} src={media.src} alt={'photo'} />
           </div>
         )}
         {type === 'video' && (
