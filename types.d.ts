@@ -38,6 +38,7 @@ export interface IService {
   _id: string;
   title: ILanguage;
   description: ILanguage;
+  slug: string;
   // icon: ImageType;
   active: boolean;
   createdAt: string;
@@ -150,4 +151,9 @@ export interface IFormDetails {
   emailAddress: string;
   customDate: Date;
   firstTime: boolean;
+}
+
+export interface IStarQuote {
+  _id: string;
+  text: ILanguage;
 }

@@ -32,7 +32,7 @@ export default async function HPCompaniesSection({ locale }: Props) {
             return (
               <CarouselItem className={'w-[250px] basis-[unset]'} key={company._id}>
                 <div className={'bg-white flex items-center w-[200px] h-[130px] justify-center'}>
-                  <img src={company.image.src} />
+                  <img className={'object-cover'} src={company.image.src} />
                 </div>
               </CarouselItem>
             );
@@ -41,7 +41,7 @@ export default async function HPCompaniesSection({ locale }: Props) {
             return (
               <CarouselItem className={'w-[250px] basis-[unset]'} key={company._id}>
                 <div className={'bg-white flex items-center w-[200px] h-[130px] justify-center'}>
-                  <img src={company.image.src} />
+                  <img className={'object-cover'} src={company.image.src} />
                 </div>
               </CarouselItem>
             );
@@ -52,7 +52,7 @@ export default async function HPCompaniesSection({ locale }: Props) {
             return (
               <CarouselItem className={'w-[250px] basis-[unset]'} key={company._id}>
                 <div className={'bg-white flex items-center w-[200px] h-[130px] justify-center'}>
-                  <img src={company.image.src} />
+                  <img className={'object-cover'} src={company.image.src} />
                 </div>
               </CarouselItem>
             );
@@ -61,7 +61,7 @@ export default async function HPCompaniesSection({ locale }: Props) {
             return (
               <CarouselItem className={'w-[250px] basis-[unset]'} key={company._id}>
                 <div className={'bg-white flex items-center w-[200px] h-[130px] justify-center'}>
-                  <img src={company.image.src} />
+                  <img className={'object-cover'} src={company.image.src} />
                 </div>
               </CarouselItem>
             );

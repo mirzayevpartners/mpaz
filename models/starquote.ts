@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const aboutUsSchema = new mongoose.Schema(
+const starQuote = new mongoose.Schema(
   {
     text: {
       az: String,
@@ -11,4 +11,4 @@ const aboutUsSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.models.AboutUs || mongoose.model('AboutUs', aboutUsSchema);
+export default mongoose.models.Starquote || mongoose.model('Starquote', starQuote);

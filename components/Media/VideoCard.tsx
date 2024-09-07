@@ -17,7 +17,7 @@ export default function VideoCard({
   return (
     <div className={cn('size-full relative', boxClassname)}>
       <img
-        className={cn('size-full', imageClassname)}
+        className={cn('size-full object-cover', imageClassname)}
         src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
       />
       <div className={'absolute inset-0 size-full'}>

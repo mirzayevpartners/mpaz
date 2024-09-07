@@ -19,6 +19,7 @@ import { ContactCreate, ContactEdit, ContactList } from '@/components/Admin/Cont
 import { SocialsCreate, SocialsEdit, SocialsList } from '@/components/Admin/Socials';
 import authProvider from '@/components/Admin/authProvider';
 import { FormDatasEdit, FormDatasList } from '@/components/Admin/FormDatas';
+import { StarQuoteCreate, StarQuoteEdit, StarQuoteList } from '@/components/Admin/StarQuote';
 
 // BottomNavbar TopNavbar Footer
 const AdminApp = () => {
@@ -59,10 +60,11 @@ const AdminApp = () => {
       <Resource name={'Question'} list={QuestionList} edit={QuestionEdit} create={QuestionCreate} />
       <Resource name={'ActiveWorks'} list={ActiveWorksList} edit={ActiveWorksEdit} create={ActiveWorksCreate} />
       <Resource name={'CompanyCounts'} list={CompanyCountsList} edit={CompanyCountsEdit} create={CompanyCountsCreate} />
-      {/*<Resource name={'AboutUs'} list={AboutUsList} edit={AboutUsEdit} create={AboutUsCreate} />*/}
+      <Resource name={'AboutUs'} list={AboutUsList} edit={AboutUsEdit} create={AboutUsCreate} />
       <Resource name={'Contact'} list={ContactList} edit={ContactEdit} create={ContactCreate} />
       <Resource name={'Socials'} list={SocialsList} edit={SocialsEdit} create={SocialsCreate} />
       <Resource name={'FormDatas'} list={FormDatasList} edit={FormDatasEdit} />
+      <Resource name={'StarQuote'} list={StarQuoteList} edit={StarQuoteEdit} create={StarQuoteCreate} />
     </Admin>
   );
 };

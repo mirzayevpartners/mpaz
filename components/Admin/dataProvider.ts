@@ -33,6 +33,7 @@ const apiObj = {
   Contact: ['getAllContact', 'getOneContact'],
   Socials: ['getAllSocials', 'getOneSocials'],
   FormDatas: ['getAllFormDatas', 'getOneFormDatas'],
+  StarQuote: ['getAllStarQuote', 'getOneStarQuote'],
 };
 
 type Resource =
@@ -49,7 +50,8 @@ type Resource =
   | 'AboutUs'
   | 'Contact'
   | 'Socials'
-  | 'FormDatas';
+  | 'FormDatas'
+  | 'StarQuote';
 
 interface GetListParams {
   pagination: { page: number; perPage: number };
@@ -119,7 +121,7 @@ export const dataProvider = {
       await UploadToCldServiceUpdate(params);
     } else if (resource === 'Gallery') {
       await UploadToCldGalleryUpdate(params);
-    } else if (resource === 'Company' || resource === 'AboutUs') {
+    } else if (resource === 'Company') {
       await UploadToCldCompanyUpdate(params);
     }
     const url = `${apiUrl}/${apiObj[resource][1]}?${queryString.stringify(query)}`;
@@ -141,7 +143,7 @@ export const dataProvider = {
       await UploadToCldServiceCreate(params);
     } else if (resource === 'Gallery') {
       await UploadToCldGalleryCreate(params);
-    } else if (resource === 'Company' || resource === 'AboutUs') {
+    } else if (resource === 'Company') {
       await UploadToCldCompanyCreate(params);
     }
     return httpClient(url, {

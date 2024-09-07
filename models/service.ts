@@ -7,6 +7,7 @@ const serviceSchema = new mongoose.Schema(
       en: String,
       ru: String,
     },
+    slug: String,
     description: {
       az: String,
       en: String,

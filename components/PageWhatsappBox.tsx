@@ -17,7 +17,7 @@ export default async function PageWhatsappBox() {
     <Link
       href={wpSocial?.link || '#'}
       className={
-        'fixed right-[23px] top-[57%] z-[100] flex justify-center items-center cursor-pointer size-[60px] rounded-full bg-[#05A884]'
+        'fixed right-[23px] bottom-[15%] z-[100] flex justify-center items-center cursor-pointer size-[60px] rounded-full bg-[#05A884]'
       }
     >
       <img src={WhatsappSvg.src} />

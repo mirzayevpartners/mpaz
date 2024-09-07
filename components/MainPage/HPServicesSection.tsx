@@ -25,7 +25,16 @@ async function HPServicesCases({ locale }: Props) {
   return (
     <div className={'grid w-full grid-cols-4 500:!grid-cols-1 1080:grid-cols-2'}>
       {services.map((item, index) => {
-        return <ServiceCard key={item._id} index={index} title={item.title[locale]} text={item.description[locale]} />;
+        // console.log(item.slug);
+        return (
+          <ServiceCard
+            key={item._id}
+            slug={item.slug}
+            index={index}
+            title={item.title[locale]}
+            text={item.description[locale]}
+          />
+        );
       })}
     </div>
   );

@@ -33,7 +33,7 @@ export default function MediaDataCarouselItem({
           // <ImageZoom>
           <img
             onClick={() => imageClick && gallerySrc && imageClick(gallerySrc)}
-            className={'size-full cursor-zoom-in'}
+            className={'size-full cursor-zoom-in object-cover'}
             src={gallerySrc}
             alt={'photo'}
           />

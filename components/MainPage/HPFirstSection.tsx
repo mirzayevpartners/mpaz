@@ -6,13 +6,14 @@ import JusticeStatue from '@/assets/JusticeStatue.png';
 import HammerIcon from '@/assets/HammerIcon.svg';
 import StarIcon from '@/assets/Star.svg';
 import StarFullIcon from '@/assets/StarFull.svg';
-import { IActiveWorks } from '@/types';
+import { IActiveWorks, IStarQuote } from '@/types';
 import dbConnect from '@/lib/db';
 import Activeworks from '@/models/activeworks';
 import NumberAnimation from '@/components/NumberAnimation';
 import { Locale } from '@/i18config';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { Link } from '@/navigation';
+import Starquote from '@/models/starquote';
 interface Props {
   locale: Locale;
 }
@@ -21,9 +22,11 @@ export default async function HPFirstSection({ locale }: Props) {
   unstable_setRequestLocale(locale);
   const t = await getTranslations('Homepage_Section1');
   let activeWorks: IActiveWorks[] = [];
+  let starQuote: IStarQuote | null = null;
   try {
     await dbConnect();
     activeWorks = await Activeworks.find({});
+    starQuote = await Starquote.findOne({});
   } catch (e) {
     console.log(e);
     return <div>Server Error</div>;
@@ -69,8 +72,12 @@ export default async function HPFirstSection({ locale }: Props) {
                       <img className={'STAR size-full'} src={StarFullIcon.src} />
                     </div>
                     <div className={'absolute bottom-3 px-2'}>
-                      <h3 className={'text-white text-[10px] leading-[10px] min1240:text-sm min1240:leading-[16.94px] text-left tracking-[-0.025em]'}>
-                        {t('star')}
+                      <h3
+                        className={
+                          'text-white text-[10px] leading-[10px] min1240:text-sm min1240:leading-[16.94px] text-left tracking-[-0.025em]'
+                        }
+                      >
+                        {starQuote?.text[locale] || ''}
                       </h3>
                     </div>
                   </div>

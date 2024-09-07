@@ -33,7 +33,11 @@ export function LangSwitcher({ locale }: Props) {
     router.prefetch(`/${locale}${slugWithoutLocale}`);
   }, [locale, router]);
   return (
-    <Select onValueChange={(value) => router.replace(`/${value}${slugWithoutLocale}`)}>
+    <Select
+      onValueChange={(value) => {
+        router.replace(`/${value}${slugWithoutLocale}`);
+      }}
+    >
       <SelectTrigger className="!w-fit bg-transparent !border-none !p-0 !ring-transparent !outline-transparent !ring-offset-0 justify-normal">
         {langs.map((lang) => {
           if (lang.locale === locale) {

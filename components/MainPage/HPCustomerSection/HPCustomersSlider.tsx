@@ -33,7 +33,7 @@ export default async function HPCustomersSlider({ locale }: Props) {
               className={'flex flex-col rounded-lg gap-y-6 bg-grayishBg p-6 border border-myGray'}
             >
               <div className={'flex gap-x-3'}>
-                <img className={'size-16 rounded-full'} src={item.photo.src} />
+                <img className={'size-16 rounded-full object-cover'} src={item.photo.src} />
                 <div className={'flex flex-col gap-y-1'}>
                   <h4 className={'font-bold text-lg leading-[21.78px] text-mainGreen'}>{item.fullName[locale]}</h4>
                   <p className={'text-secondText text-sm leading-[16.94px]'}>{item.title[locale]}</p>

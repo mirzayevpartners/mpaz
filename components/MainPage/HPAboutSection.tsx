@@ -4,13 +4,29 @@ import ButtonArrowRight from '@/components/custom-ui/ButtonArrowRight';
 import { Locale } from '@/i18config';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { Link } from '@/navigation';
+import { IAboutUs } from '@/types';
+import dbConnect from '@/lib/db';
+import Aboutus from '@/models/aboutus';
+import DynamicText from '@/components/DynamicText';
 
 interface Props {
   locale: Locale;
 }
 export default async function HPAboutSection({ locale }: Props) {
   unstable_setRequestLocale(locale);
+  let aboutUs: IAboutUs | null = null;
+  try {
+    await dbConnect();
+    aboutUs = await Aboutus.findOne();
+  } catch (e) {
+    console.error(e);
+  }
   const t = await getTranslations('Homepage_AboutSection');
+  let truncatedText;
+  if (aboutUs) {
+    truncatedText =
+      aboutUs.text[locale].length > 350 ? aboutUs.text[locale].slice(0, 350) + '...' : aboutUs.text[locale];
+  }
   return (
     <section id={'AboutSection'} className={'bg-white py-28'}>
       <ContainerWrapper
@@ -32,12 +48,10 @@ export default async function HPAboutSection({ locale }: Props) {
                 {t('subtitle')}
               </h1>
             </div>
-            <p className={'max-w-[50ch] text-base leading-7 text-newsText'}>
-              Lorem ipsum dolor sit amet consectetur. Adipiscing mollis facilisis adipiscing facilisis auctor id quam.
-              Arcu a quisque amet facilisis orci egestas sed sed volutpat. Lorem ipsum dolor sit amet consectetur.
-              Adipiscing mollis facilisis adipiscing facilisis auctor id quam. Arcu a quisque amet facilisis orci
-              egestas sed sed volutpat.Lorem ipsum dolor sit amet consectetur.
-            </p>
+            <DynamicText
+              className={'max-w-[50ch] text-base leading-7 text-newsText'}
+              htmlString={truncatedText || ''}
+            />
           </div>
           <Link className={'w-fit'} href={'/haqqimizda'}>
             <ButtonArrowRight className={'w-fit 500:w-full 500:justify-center'} text={t('button')} />

@@ -21,7 +21,8 @@ export const ServiceList = () => (
   <List>
     <Datagrid bulkActionButtons={false} rowClick="edit">
       <TextField label={'Başlıq(Az)'} source="title.az" />
-      <TextField label={'Açıqlama(Az)'} source="description.az" />
+      <TextField source={'slug'} label={'Link'} />
+      {/*<TextField label={'Açıqlama(Az)'} source="description.az" />*/}
       <BooleanField label={'Aktiv'} source="active" />
     </Datagrid>
   </List>
@@ -35,10 +36,11 @@ export const ServiceEdit = () => (
         <TextInput label={'Başlıq(En)'} required source="title.en" />
         <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
       </GridWrapper>
+      <TextInput label={'Link'} source={'slug'} />
       <GridWrapper>
-        <TextInput label={'Açıqlama(Az)'} required source="description.az" />
-        <TextInput label={'Açıqlama(En)'} required source="description.en" />
-        <TextInput label={'Açıqlama(Ru)'} required source="description.ru" />
+        <RichInput label={'Açıqlama(Az)'} required source="description.az" />
+        <RichInput label={'Açıqlama(En)'} required source="description.en" />
+        <RichInput label={'Açıqlama(Ru)'} required source="description.ru" />
       </GridWrapper>
       {/*<ImageInput source="icon" label="Ikon">*/}
       {/*  <ImageField source="src" title="icon" />*/}
@@ -56,10 +58,11 @@ export const ServiceCreate = () => (
         <TextInput label={'Başlıq(En)'} required source="title.en" />
         <TextInput label={'Başlıq(Ru)'} required source="title.ru" />
       </GridWrapper>
+      <TextInput label={'Link'} source={'slug'} />
       <GridWrapper>
-        <TextInput label={'Açıqlama(Az)'} required source="description.az" />
-        <TextInput label={'Açıqlama(En)'} required source="description.en" />
-        <TextInput label={'Açıqlama(Ru)'} required source="description.ru" />
+        <RichInput label={'Açıqlama(Az)'} required source="description.az" />
+        <RichInput label={'Açıqlama(En)'} required source="description.en" />
+        <RichInput label={'Açıqlama(Ru)'} required source="description.ru" />
       </GridWrapper>
       {/*<ImageInput source="icon" label="Ikon">*/}
       {/*  <ImageField source="src" title="icon" />*/}
