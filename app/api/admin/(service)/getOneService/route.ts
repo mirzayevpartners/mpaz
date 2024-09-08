@@ -75,9 +75,9 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json('Not found', { status: 404 });
     }
 
-    const public_id_arr = [service.icon.public_id];
+    // const public_id_arr = [service.icon.public_id];
     // console.log(public_id_arr);
-    await deleteFromR2(public_id_arr);
+    // await deleteFromR2(public_id_arr);
     revalidatePath('/', 'layout');
     return NextResponse.json(service);
   } catch (e) {
