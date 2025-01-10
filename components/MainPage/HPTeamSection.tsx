@@ -22,7 +22,7 @@ async function TeamPartners({ locale }: Props) {
   let team: ITeam[] = [];
   try {
     await dbConnect();
-    team = await Team.find({}).limit(4);
+    team = await Team.find({ active: true }).sort({ order: 1 }).limit(4);
   } catch (e) {
     console.log(e);
     return <div>Server Error</div>;

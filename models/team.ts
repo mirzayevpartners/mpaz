@@ -15,6 +15,7 @@ const teamSchema = new mongoose.Schema(
     },
     photo: { src: String, title: String, public_id: String },
     active: { type: Boolean, default: true },
+    order: Number,
   },
   { timestamps: true }
 );
