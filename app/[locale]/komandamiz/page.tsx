@@ -15,7 +15,7 @@ export default async function Home({ params: { locale } }: { params: { locale: L
   let data: ITeam[] = [];
   try {
     await dbConnect();
-    data = await Team.find({ active: true });
+    data = await Team.find({ active: true }).sort({ order: 1 });
   } catch (e) {
     return <div>Server error</div>;
   }
