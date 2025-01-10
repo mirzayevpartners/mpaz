@@ -88,16 +88,22 @@ export const dataProvider = {
       order: params.sort.order,
     };
     const url = `${apiUrl}/${apiObj[resource][0]}?${queryString.stringify(query)}`;
-    return httpClient(url).then(({ headers, json }) => {
-      if (headers.get('Content-Type') !== 'application/json') return;
-      return {
-        data: json.map((obj: any) => {
-          const { _id, ...rest } = obj;
-          return { ...rest, id: _id };
-        }),
-        total: json.length,
-      };
-    });
+    return httpClient(url)
+      .then(({ headers, json }) => {
+        if (!json || headers.get('Content-Type') !== 'application/json') {
+          return Promise.reject(new Error('Invalid response from server.'));
+        }
+        return {
+          data: json.map((obj: any) => {
+            const { _id, ...rest } = obj;
+            return { ...rest, id: _id };
+          }),
+          total: json.length,
+        };
+      })
+      .catch((error) => {
+        return Promise.reject(error);
+      });
   },
   getOne: (resource: Resource, params: GetOneParams) => {
     const query = {

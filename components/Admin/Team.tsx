@@ -10,19 +10,27 @@ import {
   ImageField,
   BooleanField,
   BooleanInput,
+  ArrayField,
 } from 'react-admin';
 import GridWrapper from '@/components/Admin/GridWrapper';
+import CustomTeamList from '@/components/Admin/Team/CustomTeamList';
 
 export const TeamList = () => (
-  <List>
-    <Datagrid bulkActionButtons={false} rowClick="edit">
-      <TextField label={'Ad Soyad(Az)'} source="fullName.az" />
-      <TextField label={'Peşə(Az)'} source="profession.az" />
-      <TextField label={'Email'} source="email" />
-      <BooleanField label={'Aktiv'} source="active" />
-    </Datagrid>
-  </List>
+  <div>
+    <List>
+      {/*<Datagrid bulkActionButtons={false} rowClick="edit">*/}
+      {/*<ArrayField source={''} />*/}
+      <CustomTeamList />
+      {/*<TextField label={'Ad Soyad(Az)'} source="fullName.az" />*/}
+      {/*<TextField label={'Peşə(Az)'} source="profession.az" />*/}
+      {/*<TextField label={'Email'} source="email" />*/}
+      {/*<BooleanField label={'Aktiv'} source="active" />*/}
+      {/*</Datagrid>*/}
+    </List>
+  </div>
 );
+
+// export const TeamList = () => <CustomTeamList />;
 
 export const TeamEdit = () => (
   <Edit>
