@@ -18,7 +18,7 @@
   },
   "Homepage_FormSection": {
     "imageTitle": "Konsultasiya üçün müraciət edin",
-    "imageDescription": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id",
+    "imageDescription": "Peşəkar hüquqi dəstək üçün indi bizimlə əlaqə saxlayın! Mütəxəssislərimiz sizin suallarınızı cavablandırmağa və ehtiyaclarınıza uyğun həll yolları təklif etməyə hazırdır.",
     "title": "Müraciət forması",
     "fullName": "Ad və Soyadınız",
     "phone": "Telefon nömrəniz",
@@ -31,7 +31,7 @@
   "Homepage_ServicesSection": {
     "title": "Mövcud",
     "subtitle": "Xidmətlərimiz",
-    "description": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id",
+    "description": "Peşəkar hüquq xidmətləri ilə sizin yanınızdayıq! Müştərilərimizə hüquqi məsləhətlər, sənədlərin hazırlanması və məhkəmə proseslərində təmsilçilik daxil olmaqla geniş xidmətlər təklif edirik.",
     "button": "Bütün xidmətlər"
   },
   "Homepage_AboutSection": {

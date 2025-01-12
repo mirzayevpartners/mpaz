@@ -10,8 +10,6 @@ import dbConnect from '@/lib/db';
 import Video from '@/models/video';
 import Gallery from '@/models/gallery';
 
-
-
 export default async function HPMediaSection({ locale }: { locale: Locale }) {
   unstable_setRequestLocale(locale);
   let sample_videos: IVideo[] = [];
@@ -39,7 +37,7 @@ export default async function HPMediaSection({ locale }: { locale: Locale }) {
       <ContainerWrapper className={'flex h-full  justify-center !max-w-[90%] ml-auto mr-0'}>
         <div className={'flex 1400:!flex-col gap-y-6 gap-x-6 max-w-full'}>
           <div className={'flex flex-1'}>
-            <div className={'flex flex-col gap-y-8 1750:!w-[50%]'}>
+            <div className={'flex flex-col gap-y-8'}>
               <div className={'flex flex-col gap-y-1'}>
                 <h4 className={'text-base leading-[19.36px] text-secondGold'}>{t('title')}</h4>
                 <h2 className={'text-[32px] font-playfair font-semibold leading-[42.66px] text-textBlue'}>

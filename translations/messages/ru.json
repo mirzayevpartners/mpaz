@@ -18,7 +18,7 @@
   },
   "Homepage_FormSection": {
     "imageTitle": "Подать заявку на консультацию",
-    "imageDescription": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id",
+    "imageDescription": "Свяжитесь с нами прямо сейчас для получения профессиональной юридической поддержки! Наши специалисты готовы ответить на ваши вопросы и предложить решения, соответствующие вашим потребностям.",
     "title": "Форма заявки",
     "fullName": "Ваше Полное Имя",
     "phone": "Ваш Номер Телефона",
@@ -31,7 +31,7 @@
   "Homepage_ServicesSection": {
     "title": "Доступно",
     "subtitle": "Услуги",
-    "description": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id",
+    "description": "Мы рядом с вами, предоставляя профессиональные юридические услуги! Мы предлагаем широкий спектр услуг, включая юридические консультации, подготовку документов и представительство в судебных процессах.",
     "button": "Все Услуги"
   },
   "Homepage_AboutSection": {

@@ -19,7 +19,7 @@
   },
   "Homepage_FormSection": {
     "imageTitle": "Apply for Consultation",
-    "imageDescription": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id",
+    "imageDescription": "Contact us now for professional legal support! Our experts are ready to answer your questions and offer solutions tailored to your needs.",
     "title": "Application Form",
     "fullName": "Your Full Name",
     "phone": "Your Phone Number",
@@ -32,7 +32,7 @@
   "Homepage_ServicesSection": {
     "title": "Available",
     "subtitle": "Services",
-    "description": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi. Neque in nascetur id",
+    "description": "We are by your side with professional legal services! We offer a wide range of services, including legal consultations, document preparation, and representation in court proceedings.",
     "button": "All Services"
   },
   "Homepage_AboutSection": {
