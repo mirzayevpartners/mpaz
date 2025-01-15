@@ -41,7 +41,7 @@
   },
   "Homepage_TeamSection": {
     "title": "Peşəkar partnyorlarımızla tanış olun!",
-    "description": "“Mirzayev and Partners Law Firm”  hüquq sahəsində uzunmüddətli təcrübəyə malik, yüksək ixtisaslı mütəxəssislərdən ibarət peşəkar komanda ilə xidmət göstərir. Bizim hüquqşünaslarımız milli və beynəlxalq hüquq üzrə dərin biliklərə, məhkəmə və arbitraj təcrübəsinə, eləcə də hüququn müxtəlif  sahələrində unikal iş təcrübəsinə malikdirlər.",
+    "description": "“Mirzayev and Partners Law Firm” hüquq sahəsində uzunmüddətli təcrübəyə malik, yüksək ixtisaslı mütəxəssislərdən ibarət peşəkar komanda ilə xidmət göstərir. Bizim hüquqşünaslarımız milli və beynəlxalq hüquq üzrə dərin biliklərə, məhkəmə və arbitraj təcrübəsinə, eləcə də hüququn müxtəlif  sahələrində unikal iş təcrübəsinə malikdirlər.",
     "button": "Bütün komandamız"
   },
   "Homepage_NewsSection": {
@@ -87,12 +87,12 @@
   "TeamPage": {
     "title": "Komanadamız",
     "subtitle": "Peşəkar partnyorlarımızla tanış olun!",
-    "description": "Lorem ipsum dolor sit amet consectetur. Adipiscing mollis facilisis adipiscing facilisis auctor id quam. Arcu a quisque amet facilisis orci egestas"
+    "description": "“Mirzayev and Partners Law Firm” hüquq sahəsində uzunmüddətli təcrübəyə malik, yüksək ixtisaslı mütəxəssislərdən ibarət peşəkar komanda ilə xidmət göstərir."
   },
   "ServicesPage": {
     "title": "Mövcud",
     "subtitle": "Xidmətlərimiz",
-    "description": "Lorem ipsum dolor sit amet consectetur. Morbi eget at dui ornare sit laoreet et nisl morbi.Neque in nascetur id "
+    "description": "Peşəkar hüquq xidmətləri ilə sizin yanınızdayıq! Müştərilərimizə hüquqi məsləhətlər, sənədlərin hazırlanması və məhkəmə proseslərində təmsilçilik daxil olmaqla geniş xidmətlər təklif edirik."
   },
   "AboutPage": {
     "title": "Haqqımızda",
