@@ -20,7 +20,7 @@ import PageWhatsappBox from '@/components/PageWhatsappBox';
 import CookieConsent from '@/components/CookieConsent';
 
 export const metadata: Metadata = {
-  title: 'mp.az',
+  title: 'mirzayevpartners',
   description: 'mp.az',
   icons: [{ url: '/Logo.svg', rel: 'icon', type: 'image/x-icon' }],
 };

@@ -1,7 +1,6 @@
+import NewAboutImage from '@/assets/photorealistic-lawyer-environment.jpg'
 import TopShowLinks from '@/components/TopShowLinks';
-import AboutPageBg from '@/assets/AboutPageBG.png';
 import ContainerWrapper from '@/components/ContainerWrapper';
-import AboutPageBgSmall from '@/assets/AboutPageBgSmall.png';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { Locale } from '@/i18config';
 import { IAboutUs } from '@/types';
@@ -34,8 +33,9 @@ export default async function Home({ params: { locale } }: { params: { locale: L
       <TopShowLinks links={links} />
       <ContainerWrapper className={'flex flex-col gap-y-8 py-8'}>
         <div>
-          <img src={AboutPageBg.src} className={'hidden sm:block w-full'} />
-          <img src={AboutPageBgSmall.src} className={'block sm:hidden w-full'} />
+          <img src={NewAboutImage.src} className={'w-full'} />
+          {/*<img src={AboutPageBg.src} className={'hidden sm:block w-full'} />*/}
+          {/*<img src={AboutPageBgSmall.src} className={'block sm:hidden w-full'} />*/}
         </div>
         <div className={'flex flex-col items-center gap-y-6'}>
           <div className={'flex flex-col gap-y-1 items-center'}>
